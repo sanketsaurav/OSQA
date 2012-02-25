@@ -1,6 +1,9 @@
 *.pyc
 .pydevproject
+<<<<<<< HEAD
 .settings
+=======
+>>>>>>> 25a2da4... Add gitignore
 cache/*
 log/django.osqa.log
 osqa.wsgi
