@@ -206,11 +206,15 @@ blockquote {
     background-color: #555753;
 }
 
+<<<<<<< HEAD
 #topNav {
     width: 980px;
 }
 
 #topNav a {
+=======
+#top a {
+>>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
     font-size: 13px;
     font-weight: bold;
     height: 35px;
@@ -237,10 +241,17 @@ blockquote {
     float: left;
     font-size: 16px;
     font-weight: bold;
+<<<<<<< HEAD
     height: 26px;
     line-height: 28px;
     margin-right: 10px;
     padding: 1px 10px;
+=======
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 1px 8px;
+>>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
     text-decoration: none;
 }
 
@@ -255,7 +266,11 @@ blockquote {
 #nav a#nav_ask {
     float: right;
     background: #8B0000;
+<<<<<<< HEAD
     margin-left: 200px;
+=======
+    margin-left: 228px;
+>>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
 }
 
 #nav a#nav_ask:hover {
@@ -924,6 +939,25 @@ span.form-error {
     font-size: 90%;
 }
 
+<<<<<<< HEAD
+=======
+#editor {
+    font-size: 100%;
+    line-height: 18px;
+    min-height: 300px;
+    width: 100%;
+    border: 1px solid #999;
+}
+
+.wmd-preview {
+    border: 2px dotted #CCCCCE;
+    margin-top: 10px;
+    min-height: 20px;
+    padding: 6px;
+    width: 98%;
+}
+
+>>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
 .preview-toggle {
     color: #AAAAAA;
     font-weight: 600;
