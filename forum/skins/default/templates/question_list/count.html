@@ -6,21 +6,15 @@
 
 <div class="boxC">
     <div class="questions-count">
-        {{ questions.paginator.count }}<span style="color:black;font-size:14px;margin-left:5px">{{ list_description }}</span>
+        {{ questions.paginator.count }}
     </div>
-
+    <span>{{ questions.paginator.sort_description }}</span>
 
     {% if answer_count %}
     <div class="questions-count">
-        {{ answer_count }}<span style="color:black;font-size:14px;margin-left:5px">{% trans "answers" %}</span>
+        {{ answer_count }}
     </div>
-
+    <span>{% trans "answers" %}</span>
     {% endif %}
-
-    <div>
-        <p class="nomargin">
-            {{ questions.paginator.sort_description }}
-        </p>
-    </div>
 </div>
 {% endspaceless %}

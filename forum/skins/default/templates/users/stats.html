@@ -9,6 +9,7 @@
 
         <a name="questions"></a>
         {% spaceless %}
+        <div class="user-stats-heading">
             <h2>
                 {% blocktrans count questions.paginator.count as counter %}
                 <span class="count">{{counter}}</span> Question
@@ -18,6 +19,7 @@
                 <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');"
                     href="{{ view_user.get_asked_url }}?type=rss" title="{% trans "subscribe to question RSS feed" %}"></a>
             </h2>
+        </div>
         {% endspaceless %}
         <div>{{ questions.paginator.sort_tabs }}</div>
 		<div id="listA" class="user-stats-table">
@@ -31,6 +33,7 @@
 
         <a name="answers"></a>
         {% spaceless %}
+            <div class="user-stats-heading">
             <h2>
                 {% blocktrans count answers.paginator.count as counter %}
                 <span class="count">{{counter}}</span> Answer
@@ -38,6 +41,7 @@
                 <span class="count">{{counter}}</span> Answers
                 {% endblocktrans %}
             </h2>
+            </div>
         {% endspaceless %}
         <div>{{ answers.paginator.sort_tabs }}</div>
         <div class="user-stats-table">
@@ -63,6 +67,7 @@
         <br clear="all"/>
         <a name="votes"></a>
         {% spaceless %}
+            <div class="user-stats-heading">
             <h2>
                 {% blocktrans count total_votes as cnt %}
                     <span class="count">{{cnt}}</span> Vote
@@ -70,6 +75,7 @@
                     <span class="count">{{cnt}}</span> Votes
                 {% endblocktrans %}
             </h2>
+            </div>
         {% endspaceless %}
         <div class="user-stats-table">
             <table>
@@ -89,6 +95,7 @@
         </div>
         <a name="tags"></a>
         {% spaceless %}
+            <div class="user-stats-heading">
             <h2>
                 {% blocktrans count user_tags|length as counter %}
                     <span class="count">{{counter}}</span> Tag
@@ -96,6 +103,7 @@
                     <span class="count">{{counter}}</span> Tags
                 {% endblocktrans %}
             </h2>
+            </div>
         {% endspaceless %}
         <div class="user-stats-table">
             <table class="tags">
@@ -118,6 +126,7 @@
         </div>
         <a name="badges"></a>
         {% spaceless %}
+        <div class="user-stats-heading">
         <h2>
             {% blocktrans count total_awards as counter %}
             <span class="count">{{counter}}</span> Badge
@@ -125,6 +134,7 @@
             <span class="count">{{counter}}</span> Badges
             {% endblocktrans %}
         </h2>
+        </div>
         {% endspaceless %}
         <div class="user-stats-table">
             <table>
