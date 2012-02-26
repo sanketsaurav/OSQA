@@ -19,9 +19,8 @@
         {% if not question.nis.closed %}
         <script type='text/javascript' src='{% media  "/media/js/osqa.question.js" %}'></script>
         <script type='text/javascript' src='{% media  "/media/js/jquery.caret.js" %}'></script>
-        <script type='text/javascript' src='{% media  "/media/js/wmd/showdown.js" %}'></script>
-        <script type='text/javascript' src='{% media  "/media/js/wmd/wmd.js" %}'></script>
-        <link rel="stylesheet" type="text/css" href="{% media  "/media/js/wmd/wmd.css" %}" />
+
+        {% include "pagedown_js.html" %}
 
         {% if embed_youtube_videos %}
         <script type='text/javascript' src='{% media  "/media/js/viewbox_min.js" %}'></script>
@@ -38,19 +37,6 @@
             if (answer_sort_tab) {
                 $("#" + answer_sort_tab).attr('className',"on");
             }
-
-            $('#editor').TextAreaResizer();
-
-            //toggle preview of editor
-            var display = true;
-            var txt = "[{% trans "hide preview" %}]";
-            $('#pre-collapse').text(txt);
-            $('#pre-collapse').bind('click', function(){
-                txt = display ? "[{% trans "show preview" %}]" : "[{% trans "hide preview" %}]";
-                display = !display;
-                $('#previewer').toggle();
-                $('#pre-collapse').text(txt);
-            });
         });
 
         function submitClicked(e, f) {
@@ -92,7 +78,7 @@
             </style>
         </noscript>
 {% endblock %}
-        
+
 {% block content %}
 <div class="headNormal">
     <h1><a href="{{ question.get_absolute_url }}">{{ question.headline }}</a></h1>
@@ -104,7 +90,7 @@
                     <td style="width:30px;vertical-align:top">
                         <div class="vote-buttons">
                             {% vote_buttons question request.user %}
-                            {% favorite_mark question request.user %}                            
+                            {% favorite_mark question request.user %}
                         </div>
                     </td>
                     <td>
@@ -118,7 +104,7 @@
                                         title="{% blocktrans with tag as tagname %}see questions tagged '{{ tagname }}'{% endblocktrans %}" rel="tag">{{ tag }}</a>
                                 {% endfor %}
                             </div>
-                            <div id="question-controls" class="post-controls">                            
+                            <div id="question-controls" class="post-controls">
                                 {% post_controls question request.user %}
                                 {% wiki_symbol request.user question %}
                             </div>
@@ -127,7 +113,7 @@
                             </div>
                             {% comments question request.user %}
                         </div>
-                        
+
                     </td>
                 </tr>
             </table>
@@ -150,7 +136,7 @@
                     {{ answers.paginator.sort_tabs }}
                 </div>
                 {{ answers.paginator.page_numbers }}
-  
+
                 {% for answer in answers.paginator.page %}
                     <a name="{{ answer.id }}"></a>
                     <div id="answer-container-{{ answer.id }}" class="answer {% post_classes answer %}{% ifequal answer.id focused_answer_id %} focusedAnswer{% endifequal %}">
@@ -189,7 +175,7 @@
             {% csrf_token %}
             <div style="clear:both">
             </div>
-            
+
             {% if not question.closed %}
                 <div style="padding:10px 0 0 0;">
                     {% spaceless %}
@@ -221,52 +207,26 @@
                 {% endcomment %}
 
                 <div id="description" class="" >
-                    <div id="wmd-button-bar" class="wmd-panel"></div>
-                    {{ answer.text }}
-                    <div class="preview-toggle">
-                        <table width="100%">
-                            <tr>
-                                <td>
-                                    <span id="pre-collapse" 
-                                        title="{% trans "Toggle the real time Markdown editor preview" %}">
-                                            {% trans "toggle preview" %}
-                                    </span>
-                                </td>
-                                <td style="text-align: right;" id="editor-metrics"></td>
-                                {% if settings.WIKI_ON %}
-                                <td style="text-align:right;">
-                                    {{ answer.wiki }} 
-                                    <span style="font-weight:normal;cursor:help" 
-                                        title="{{answer.wiki.help_text}}">
-                                            {{ answer.wiki.label_tag }} 
-                                    </span>
-                                </td>
-                                {% endif %}
-                            </tr>
-                        
-                        </table>  
-                    </div>
-                    {{ answer.text.errors }}
-                    <div id="previewer" class="wmd-preview"></div>
+                    {% include "pagedown_editor.html" %}
                 </div>
 
-	            {% if answer.recaptcha %}
+	            {% if form.recaptcha %}
 	            <div class="question-captcha" style="float: left;">
-	            	{{ answer.recaptcha.errors }}
-	            	{{ answer.recaptcha }}
+	            	{{ form.recaptcha.errors }}
+	            	{{ form.recaptcha }}
 	            </div>
 	            <div class="clear"></div>
 	            {% endif %}
-                
+
                 <p><span class="form-error"></span></p>
                 <input type="button"
                     {% if user.is_anonymous %}
-                        value="{% trans "Login/Signup to Post Your Answer" %}" 
+                        value="{% trans "Login/Signup to Post Your Answer" %}"
                     {% else %}
                         {% if user == question.author %}
-                        value="{% trans "Answer Your Own Question" %}" 
+                        value="{% trans "Answer Your Own Question" %}"
                         {% else %}
-                        value="{% trans "Answer the question" %}" 
+                        value="{% trans "Answer the question" %}"
                         {% endif %}
                     {% endif %}
                     class="submit" style="float:left" onclick="submitClicked(event, this.form)"/>
@@ -301,10 +261,10 @@
     <p>
         {% trans "question asked" %}: <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
     </p>
-    <p> 
+    <p>
      	{% trans "question was seen" %}: <strong>{{ question.view_count|intcomma }} {% trans "times" %}</strong>
     </p>
-    <p> 
+    <p>
         {% trans "last updated" %}: <strong title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</strong>
     </p>
 </div>

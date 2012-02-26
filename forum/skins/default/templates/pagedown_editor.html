@@ -1,0 +1,25 @@
+{% load i18n extra_tags extra_filters %}
+                <div class="wmd-panel">
+                    <div id="wmd-button-bar"></div>
+                    {{ form.text }}
+                </div>
+                <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+
+                <span class="form-error"></span>
+                <div class="preview-toggle">
+                    <span id="pre-collapse" title="{% trans " Toggle the real time Markdown editorpreview" %}">{% trans "toggle preview" %}</span>
+                    <span style="text-align: right; margin-left: 200px;" id="editor-metrics"></span>
+                    {% if settings.WIKI_ON %}
+                    <div style="float: right;">
+                        {{ form.wiki }}
+                        <span style="color: #000; cursor: help" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
+                    </div>
+                    {% endif %}
+                </div>
+                <script type="text/javascript">
+                (function () {
+                    var converter = new Markdown.Converter();
+                    var editor = new Markdown.Editor(converter);
+                    editor.run();
+                })();
+                </script>

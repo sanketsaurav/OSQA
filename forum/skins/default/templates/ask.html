@@ -3,9 +3,8 @@
 {% load i18n extra_tags extra_filters %}
 {% block title %}{% spaceless %}{% trans "Ask a question" %}{% endspaceless %}{% endblock %}
 {% block forejs %}
-        <script type='text/javascript' src='{% media  "/media/js/wmd/showdown.js" %}'></script>
-        <script type='text/javascript' src='{% media  "/media/js/wmd/wmd.js" %}'></script>
-        <link rel="stylesheet" type="text/css" href="{% media  "/media/js/wmd/wmd.css" %}" />
+        {% include "pagedown_js.html" %}
+
         <script type="text/html" id="question-summary-template">
             <div class="answer-summary">
                 <a href="%URL%"><div class="answer-votes">%SCORE%</div></a>
@@ -18,19 +17,6 @@
         $(function(){
             //set current module button style
             $("#nav_ask").attr('className',"on");
-            $('#editor').TextAreaResizer();
-
-            //toggle preview of editor
-			//todo remove copy-paste
-            var display = true;
-            var txt = "[{% trans "hide preview" %}]";
-            $('#pre-collapse').text(txt);
-            $('#pre-collapse').bind('click', function(){
-                txt = display ? "[{% trans "show preview" %}]" : "[{% trans "hide preview" %}]";
-                display = !display;
-                $('#previewer').toggle();
-                $('#pre-collapse').text(txt);
-            });
 
             //Tags autocomplete action
         	$("#id_tags").autocomplete("{% url matching_tags %}", {
@@ -121,26 +107,7 @@
             </div>
             <div id="ask-related-questions"></div>
             <div class="form-item">
-                <div id="wmd-button-bar" class="wmd-panel"></div>
-                {{ form.text }} {{ form.text.errors }}
-                <div class="preview-toggle">
-                    <table width="100%">
-                        <tr>
-                            <td>
-                                <span id="pre-collapse" title="{% trans "Toggle the real time Markdown editor preview" %}">{% trans "toggle preview" %}</span>
-                            </td>
-                            <td style="text-align: right;" id="editor-metrics"></td>
-                            {% if settings.WIKI_ON %}
-                            <td class="tright">
-                                {{ form.wiki }} <span class="help_text" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
-                            </td>
-                            {% endif %}
-                        </tr>
-
-                    </table>
-                </div>
-                <div id="previewer" class="wmd-preview"></div>
-                <span class="form-error"></span>
+            {% include "pagedown_editor.html" %}
             </div>
             <div class="form-item">
                 <strong>{{ form.tags.label_tag }}:</strong> {% trans "(required)" %} <span class="form-error"></span><br/>
