@@ -1,5 +1,6 @@
 *.pyc
 .pydevproject
+.settings
 cache/*
 log/django.osqa.log
 osqa.wsgi
