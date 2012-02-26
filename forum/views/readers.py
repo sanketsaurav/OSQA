@@ -80,7 +80,8 @@ def index(request):
                          Question.objects.all(),
                          base_path=reverse('questions'),
                          feed_url=reverse('latest_questions_feed'),
-                         paginator_context=paginator_context)
+                         paginator_context=paginator_context,
+                         page_title=_("Latest Questions"))
 
 @decorators.render('questions.html', 'unanswered', _('unanswered'), weight=400)
 def unanswered(request):
@@ -88,11 +89,12 @@ def unanswered(request):
                          Question.objects.exclude(id__in=Question.objects.filter(children__marked=True).distinct()).exclude(marked=True),
                          _('open questions without an accepted answer'),
                          None,
-                         _("Unanswered Questions"))
+                         _("Unanswered Questions"),
+                         show_summary=True)
 
 @decorators.render('questions.html', 'questions', _('questions'), weight=0)
 def questions(request):
-    return question_list(request, Question.objects.all(), _('questions'))
+    return question_list(request, Question.objects.all(), _('questions'), show_summary=True)
 
 @decorators.render('questions.html')
 def tag(request, tag):
@@ -171,6 +173,7 @@ def question_list(request, initial,
                   allowIgnoreTags=True,
                   feed_url=None,
                   paginator_context=None,
+                  show_summary=False,
                   feed_sort=('-added_at',),
                   feed_req_params_exclude=(_('page'), _('pagesize'), _('sort')),
                   extra_context={}):
@@ -210,8 +213,9 @@ def question_list(request, initial,
         'list_description': list_description,
         'base_path' : base_path,
         'page_title' : page_title,
-        'tab' : 'questions',
+        'tab' : None,
         'feed_url': feed_url,
+        'show_summary' : show_summary,
     }
     context.update(extra_context)
 
