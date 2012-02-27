@@ -207,14 +207,20 @@ blockquote {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a5c4805... OSQA-810: Style improvements
 #topNav {
     width: 980px;
 }
 
 #topNav a {
+<<<<<<< HEAD
 =======
 #top a {
 >>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
+=======
+>>>>>>> a5c4805... OSQA-810: Style improvements
     font-size: 13px;
     font-weight: bold;
     height: 35px;
@@ -242,6 +248,7 @@ blockquote {
     font-size: 16px;
     font-weight: bold;
 <<<<<<< HEAD
+<<<<<<< HEAD
     height: 26px;
     line-height: 28px;
     margin-right: 10px;
@@ -252,6 +259,12 @@ blockquote {
     margin-right: 10px;
     padding: 1px 8px;
 >>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
+=======
+    height: 26px;
+    line-height: 28px;
+    margin-right: 10px;
+    padding: 1px 10px;
+>>>>>>> a5c4805... OSQA-810: Style improvements
     text-decoration: none;
 }
 
@@ -267,10 +280,14 @@ blockquote {
     float: right;
     background: #8B0000;
 <<<<<<< HEAD
+<<<<<<< HEAD
     margin-left: 200px;
 =======
     margin-left: 228px;
 >>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
+=======
+    margin-left: 200px;
+>>>>>>> a5c4805... OSQA-810: Style improvements
 }
 
 #nav a#nav_ask:hover {
@@ -2117,7 +2134,11 @@ div.grippie {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 */
 =======
 */
 >>>>>>> a94fc07... OSQA-811: Replace WMD with PageDown
+=======
+*/
+>>>>>>> a5c4805... OSQA-810: Style improvements
