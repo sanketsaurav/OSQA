@@ -15,6 +15,7 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import ungettext
 from django.utils import simplejson
 from forum import settings
+from django.conf import settings as djsettings
 from django.template.defaulttags import url as default_url
 from forum import skins
 from forum.utils import html
@@ -188,7 +189,8 @@ def diff_date(date, limen=2):
 
 @register.simple_tag
 def media(url):
-    url = skins.find_media_source(url)
+    use_minified = settings.MINIFIED_RESOURCES and not djsettings.DEBUG
+    url = skins.find_media_source(url, use_minified)
     if url:
         # Create the URL prefix.
         url_prefix = settings.FORCE_SCRIPT_NAME + '/m/'

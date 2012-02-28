@@ -115,7 +115,7 @@ class SkinsTemplateLoader(BaseTemplateLoader):
 load_template_source = SkinsTemplateLoader()
 
 
-def find_media_source(url):
+def find_media_source(url, use_minified):
     """returns url prefixed with the skin name
     of the first skin that contains the file 
     directories are searched in this order:
@@ -147,5 +147,19 @@ def find_media_source(url):
                 logging.error('could not find media for %s' % url)
                 use_skin = ''
                 return None
-    return use_skin + '/' + url
+    return use_skin + '/' + minified_resource_url(url, media, use_minified)
 
+def minified_resource_url(url, media, use_minified):
+    # Fall back to an optional minified version of a resource, if requested
+    if (use_minified):
+        s = os.path.splitext
+        f = os.path.isfile
+        file = s(media);
+        minext = '.min' + file[1]
+        filepath = file[0] + minext
+        if (f(filepath)):
+          return s(url)[0] + minext
+        else:
+          return url
+    else:
+      return url
