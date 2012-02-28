@@ -51,7 +51,7 @@ def admin_page_wrapper(fn, request, *args, **kwargs):
     context['allsets'] = Setting.sets
     context['othersets'] = sorted(
             [s for s in Setting.sets.values() if not s.name in
-            ('basic', 'users', 'email', 'paths', 'extkeys', 'repgain', 'minrep', 'voting', 'accept', 'badges', 'about', 'faq', 'sidebar',
+            ('basic', 'users', 'email', 'paths', 'extkeys', 'web', 'repgain', 'minrep', 'voting', 'accept', 'badges', 'about', 'faq', 'sidebar',
             'form', 'moderation', 'css', 'headandfoot', 'head', 'view', 'urls')]
             , lambda s1, s2: s1.weight - s2.weight)
 

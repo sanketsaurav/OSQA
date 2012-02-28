@@ -48,5 +48,3 @@ CONTACT_URL = Setting('CONTACT_URL', '', BASIC_SET, dict(
 label = _("Contact URL"),
 help_text = _("The URL provided for users to contact you. It can be http: or mailto: or whatever your preferred contact scheme is."),
 required=False))
-
-

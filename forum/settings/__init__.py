@@ -35,6 +35,7 @@ from basic import *
 from sidebar import *
 from email import *
 from extkeys import *
+from web import *
 from minrep import *
 from repgain import *
 from voting import *
