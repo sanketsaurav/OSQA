@@ -175,7 +175,7 @@ msgstr ""
 
 #: forum/urls.py:45
 msgid "FAQ"
-msgstr ""
+msgstr "Frequently Asked Questions"
 
 #: forum/urls.py:46
 msgid "about/"
@@ -1109,11 +1109,11 @@ msgstr ""
 #: forum/skins/nuxeo/templates/sidebar/markdown_help.html:12
 #: forum/skins/nuxeo/templates/sidebar/markdown_help.html:17
 msgid "title"
-msgstr ""
+msgstr "Title"
 
 #: forum/forms/qanda.py:24
 msgid "please enter a descriptive title for your question"
-msgstr ""
+msgstr "Please enter a descriptive title for your question"
 
 #: forum/forms/qanda.py:31
 #, python-format
@@ -1139,7 +1139,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/header.html:53
 #: forum/skins/nuxeo/templates/search.html:20 forum/views/readers.py:266
 msgid "tags"
-msgstr ""
+msgstr "Tags"
 
 #: forum/forms/qanda.py:82
 #, python-format
@@ -3218,7 +3218,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/question_edit.html:153
 #: forum/skins/nuxeo/templates/question_retag.html:79
 msgid "Save edit"
-msgstr ""
+msgstr "Save Edit"
 
 #: forum/skins/default/templates/answer_edit.html:103
 #: forum/skins/default/templates/base_content.html:44
@@ -3276,7 +3276,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/ask.html:4
 #: forum/skins/nuxeo/templates/ask.html:112
 msgid "Ask a question"
-msgstr ""
+msgstr "Ask a Question"
 
 #: forum/skins/default/templates/ask.html:100
 #: forum/skins/nuxeo/templates/ask.html:165
@@ -3353,8 +3353,8 @@ msgstr ""
 #: forum/skins/nuxeo/templates/badges.html:13
 msgid "Community gives you awards for your questions, answers and votes."
 msgstr ""
-"If your questions and answers are highly voted, your contribution to this "
-"Q&amp;A community will be recognized with the variety of badges."
+"In addition to the reputation earned through asking useful questions and providing correct answers, "
+"you'll be recognised with badges to recognise actions that benefit the community."
 
 #: forum/skins/default/templates/badges.html:14
 #: forum/skins/nuxeo/templates/badges.html:14
@@ -3384,14 +3384,13 @@ msgstr ""
 #: forum/skins/default/templates/badges.html:42
 #: forum/skins/nuxeo/templates/badges.html:44
 msgid "gold"
-msgstr ""
+msgstr "Gold"
 
 #: forum/skins/default/templates/badges.html:45
 #: forum/skins/nuxeo/templates/badges.html:47
 msgid "gold badge description"
 msgstr ""
-"Gold badge is the highest award in this community. To obtain it have to show "
-"profound knowledge and ability in addition to your active participation."
+"Gold badges are rare. You'll need to work hard to earn one of these."
 
 #: forum/skins/default/templates/badges.html:49
 #: forum/skins/nuxeo/templates/badges.html:51
@@ -3402,14 +3401,13 @@ msgstr ""
 #: forum/skins/default/templates/badges.html:50
 #: forum/skins/nuxeo/templates/badges.html:52
 msgid "silver"
-msgstr ""
+msgstr "Silver"
 
 #: forum/skins/default/templates/badges.html:53
 #: forum/skins/nuxeo/templates/badges.html:55
 msgid "silver badge description"
 msgstr ""
-"Obtaining silver badge requires significant patience. If you have received "
-"one, that means you have greatly contributed to this community."
+"Silver badges aren't common. They take work and attention to earn."
 
 #: forum/skins/default/templates/badges.html:56
 #: forum/skins/nuxeo/templates/badges.html:58
@@ -3419,14 +3417,13 @@ msgstr ""
 #: forum/skins/default/templates/badges.html:57
 #: forum/skins/nuxeo/templates/badges.html:59
 msgid "bronze"
-msgstr ""
+msgstr "Bronze"
 
 #: forum/skins/default/templates/badges.html:60
 #: forum/skins/nuxeo/templates/badges.html:62
 msgid "bronze badge description"
 msgstr ""
-"If you are an active participant in this community, you will be recognized "
-"with this badge."
+"Bronze badges recognise active participation in the site. Wear them with pride!"
 
 #: forum/skins/default/templates/base_content.html:40
 #: forum/skins/nuxeo/templates/base_content.html:35
@@ -3565,7 +3562,7 @@ msgstr ""
 #: forum/skins/default/templates/header.html:20
 #: forum/skins/nuxeo/templates/header.html:38
 msgid "ask a question"
-msgstr ""
+msgstr "Ask a Question"
 
 #: forum/skins/default/templates/header.html:31
 #: forum/skins/default/templates/opensearch.html:7
@@ -3574,7 +3571,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/opensearch.html:7
 #: forum/skins/nuxeo/templates/search.html:15
 msgid "search"
-msgstr ""
+msgstr "Search"
 
 #: forum/skins/default/templates/header.html:35
 #: forum/skins/default/templates/search.html:20
@@ -3583,20 +3580,19 @@ msgstr ""
 #: forum/views/readers.py:95 forum/views/readers.py:168
 #: forum/views/users.py:343
 msgid "questions"
-msgstr ""
+msgstr "Questions"
 
 #: forum/skins/default/templates/header.html:37
 #: forum/skins/default/templates/search.html:22
 #: forum/skins/nuxeo/templates/header.html:54
 #: forum/skins/nuxeo/templates/search.html:21 forum/views/users.py:58
 msgid "users"
-msgstr ""
+msgstr "Users"
 
 #: forum/skins/default/templates/index.html:11
 #: forum/skins/nuxeo/templates/index.html:11
-#, fuzzy
 msgid "welcome to "
-msgstr "Welcome to Q&amp;A forum"
+msgstr "Welcome to "
 
 #: forum/skins/default/templates/logout.html:6
 #: forum/skins/default/templates/logout.html:16
@@ -4185,7 +4181,7 @@ msgstr ""
 
 #: forum/skins/default/templates/question_edit_tips.html:5
 msgid "Title Tips"
-msgstr ""
+msgstr "How to Ask"
 
 #: forum/skins/default/templates/question_edit_tips.html:17
 #: forum/skins/nuxeo/templates/question_edit_tips.html:16
@@ -4552,7 +4548,7 @@ msgstr ""
 #: forum/skins/default/templates/auth/signin.html:24
 #: forum/skins/nuxeo/templates/auth/signin.html:24
 msgid "User login"
-msgstr "User login"
+msgstr "User Login"
 
 #: forum/skins/default/templates/auth/signin.html:37
 #: forum/skins/default/templates/auth/signin.html:95
@@ -4832,7 +4828,7 @@ msgstr "Logout Now"
 #: forum/skins/default/templates/node/comments.html:15
 #: forum/skins/nuxeo/templates/node/comments.html:13
 msgid "I like this comment (click again to cancel)"
-msgstr ""
+msgstr "this is a great comment"
 
 #: forum/skins/default/templates/node/comments.html:29
 #, fuzzy
@@ -4852,9 +4848,8 @@ msgstr ""
 
 #: forum/skins/default/templates/node/comments.html:49
 #: forum/skins/nuxeo/templates/node/comments.html:45
-#, fuzzy
 msgid "add new comment"
-msgstr "post a comment"
+msgstr "add a comment"
 
 #: forum/skins/default/templates/node/convert_to_comment.html:4
 #: forum/skins/nuxeo/templates/node/convert_to_comment.html:4
@@ -4901,16 +4896,16 @@ msgstr ""
 #: forum/skins/default/templates/node/vote_buttons.html:3
 #: forum/skins/nuxeo/templates/node/vote_buttons.html:3
 msgid "I like this post (click again to cancel)"
-msgstr ""
-
-#: forum/skins/default/templates/node/vote_buttons.html:7
-#: forum/skins/nuxeo/templates/node/vote_buttons.html:7
-msgid "current number of votes"
-msgstr ""
+msgstr "This post is useful (click again to undo)"
 
 #: forum/skins/default/templates/node/vote_buttons.html:10
 #: forum/skins/nuxeo/templates/node/vote_buttons.html:10
 msgid "I dont like this post (click again to cancel)"
+msgstr "This post is not useful (click again to undo)"
+
+#: forum/skins/default/templates/node/vote_buttons.html:7
+#: forum/skins/nuxeo/templates/node/vote_buttons.html:7
+msgid "current number of votes"
 msgstr ""
 
 #: forum/skins/default/templates/node/wiki_symbol.html:5
@@ -6493,7 +6488,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/users/signature.html:23
 #: forum/templatetags/extra_tags.py:81 forum/views/meta.py:89
 msgid "badges"
-msgstr ""
+msgstr "Badges"
 
 #: forum/skins/default/templates/users/signature.html:31
 #: forum/skins/nuxeo/templates/users/signature.html:31
@@ -7518,19 +7513,16 @@ msgid "We look forward to hearing your feedback! Please, give it next time :)"
 msgstr ""
 
 #: forum/views/readers.py:39
-#, fuzzy
 msgid "Most <strong>recently updated</strong> questions"
-msgstr " "
+msgstr "questions"
 
 #: forum/views/readers.py:40
-#, fuzzy
 msgid "most <strong>recently asked</strong> questions"
-msgstr " "
+msgstr "<strong>recently asked</strong> questions"
 
 #: forum/views/readers.py:41
-#, fuzzy
 msgid "most <strong>active</strong> questions in the last 24 hours</strong>"
-msgstr " "
+msgstr "<strong>active</strong> questions in the last 24 hours</strong>"
 
 #: forum/views/readers.py:42
 msgid "mostvoted"
@@ -7603,9 +7595,8 @@ msgid "latest questions"
 msgstr ""
 
 #: forum/views/readers.py:85
-#, fuzzy
 msgid "unanswered"
-msgstr "answer"
+msgstr "Unanswered"
 
 #: forum/views/readers.py:89
 msgid "open questions without an accepted answer"
