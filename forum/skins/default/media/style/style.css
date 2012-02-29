@@ -206,21 +206,11 @@ blockquote {
     background-color: #555753;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a5c4805... OSQA-810: Style improvements
 #topNav {
     width: 980px;
 }
 
 #topNav a {
-<<<<<<< HEAD
-=======
-#top a {
->>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
-=======
->>>>>>> a5c4805... OSQA-810: Style improvements
     font-size: 13px;
     font-weight: bold;
     height: 35px;
@@ -247,24 +237,10 @@ blockquote {
     float: left;
     font-size: 16px;
     font-weight: bold;
-<<<<<<< HEAD
-<<<<<<< HEAD
     height: 26px;
     line-height: 28px;
     margin-right: 10px;
     padding: 1px 10px;
-=======
-    height: 30px;
-    line-height: 30px;
-    margin-right: 10px;
-    padding: 1px 8px;
->>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
-=======
-    height: 26px;
-    line-height: 28px;
-    margin-right: 10px;
-    padding: 1px 10px;
->>>>>>> a5c4805... OSQA-810: Style improvements
     text-decoration: none;
 }
 
@@ -279,15 +255,7 @@ blockquote {
 #nav a#nav_ask {
     float: right;
     background: #8B0000;
-<<<<<<< HEAD
-<<<<<<< HEAD
     margin-left: 200px;
-=======
-    margin-left: 228px;
->>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
-=======
-    margin-left: 200px;
->>>>>>> a5c4805... OSQA-810: Style improvements
 }
 
 #nav a#nav_ask:hover {
@@ -956,9 +924,6 @@ span.form-error {
     font-size: 90%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 #editor {
     font-size: 100%;
     line-height: 18px;
@@ -975,9 +940,6 @@ span.form-error {
     width: 98%;
 }
 
->>>>>>> 57ac328... OSQA-810: Replacement default skin for OSQA
-=======
->>>>>>> a94fc07... OSQA-811: Replace WMD with PageDown
 .preview-toggle {
     color: #AAAAAA;
     font-weight: 600;
@@ -2133,12 +2095,3 @@ div.grippie {
 	font-weight: bold;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-*/
-=======
-*/
->>>>>>> a94fc07... OSQA-811: Replace WMD with PageDown
-=======
-*/
->>>>>>> a5c4805... OSQA-810: Style improvements
