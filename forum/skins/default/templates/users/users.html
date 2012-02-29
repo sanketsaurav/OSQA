@@ -20,7 +20,7 @@
 {% endblock %}
 {% block content %}
 <div class="tabBar">
-    <div class="headUsers">{% trans "Users" %}</div>
+    <div class="headUsers"><a class="dot-list"></a>{% trans "Users" %}</div>
     {{ users.paginator.sort_tabs }}
 </div>
 <div id="main-body" style="width:100%">

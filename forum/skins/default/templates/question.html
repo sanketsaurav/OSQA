@@ -23,7 +23,7 @@
         {% include "pagedown_js.html" %}
 
         {% if embed_youtube_videos %}
-        <script type='text/javascript' src='{% media  "/media/js/viewbox.js" %}'></script>
+        <script type='text/javascript' src='{% media  "/media/js/viewbox.min.js" %}'></script>
         <script type='text/javascript' src='{% media  "/media/js/youtube.js" %}'></script>
         <link rel="stylesheet" type="text/css" href="{% media  "/media/style/viewbox.css" %}" />
         {% endif %}
@@ -131,6 +131,7 @@
                 <div class="tabBar">
                     <a name="sort-top"></a>
                     <div class="headQuestions">
+                    <a class="dot-list"></a>
                     {% blocktrans count answers.paginator.count as counter %}One Answer:{% plural %}{{counter}} Answers:{% endblocktrans %}
                     </div>
                     {{ answers.paginator.sort_tabs }}

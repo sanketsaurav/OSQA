@@ -1,4 +1,3 @@
-/** sprite: sprite; sprite-image: url('../images/sprite.png'); sprite-layout: vertical */
 
 body {
     color: #000000;
@@ -200,7 +199,8 @@ blockquote {
 }
 
 .license {
-    background-image: url("../images/by-sa-88x31.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -0px;
     width: 88px;
     height: 31px;
     background-repeat: no-repeat;
@@ -689,7 +689,8 @@ a.medal:hover {
 }
 
 .dot-list {
-    background-image: url("../images/dot-list.gif"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -31px;
     width: 11px;
     height: 11px;
     background-repeat: no-repeat;
@@ -1512,7 +1513,8 @@ a.post-vote, .favorite-mark, a.accept-answer {
 }
 
 a.post-vote.up {
-    background-image: url("../images/vote-arrow-up.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -42px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1520,7 +1522,8 @@ a.post-vote.up {
 }
 
 a.post-vote.up.on, a.post-vote.up:hover {
-    background-image: url("../images/vote-arrow-up-on.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -66px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1528,7 +1531,8 @@ a.post-vote.up.on, a.post-vote.up:hover {
 }
 
 a.post-vote.down {
-    background-image: url("../images/vote-arrow-down.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -90px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1537,7 +1541,8 @@ a.post-vote.down {
 }
 
 a.post-vote.down.on, a.post-vote.down:hover {
-    background-image: url("../images/vote-arrow-down-on.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -114px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1545,7 +1550,8 @@ a.post-vote.down.on, a.post-vote.down:hover {
 }
 
 a.accept-answer {
-    background-image: url("../images/vote-accepted.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -138px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1553,7 +1559,8 @@ a.accept-answer {
 }
 
 a.accept-answer.on, a.accept-answer:hover {
-    background-image: url("../images/vote-accepted-on.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -162px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1570,7 +1577,8 @@ a.accept-answer.on, a.accept-answer:hover {
 }
 
 a.community-wiki {
-    background-image: url("../images/wiki.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -186px;
     width: 32px;
     height: 32px;
     background-repeat: no-repeat;
@@ -1585,7 +1593,8 @@ a.community-wiki {
 }
 
 .favorite-mark {
-    background-image: url("../images/vote-favorite-off.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -218px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1593,7 +1602,8 @@ a.community-wiki {
 }
 
 .favorite-mark.on, a.favorite-mark:hover {
-    background-image: url("../images/vote-favorite-on.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -242px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1669,7 +1679,8 @@ a.comment-like, a.comment-delete, a.comment-edit {
 }
 
 a.comment-like {
-    background-image: url("../images/comment-like.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -266px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1677,7 +1688,8 @@ a.comment-like {
 }
 
 a.comment-like:hover, a.comment-like.on {
-    background-image: url("../images/comment-like-on.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -280px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1685,7 +1697,8 @@ a.comment-like:hover, a.comment-like.on {
 }
 
 a.comment-delete {
-    background-image: url("../images/comment-delete.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -294px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1693,7 +1706,8 @@ a.comment-delete {
 }
 
 a.comment-delete:hover {
-    background-image: url("../images/comment-delete-hover.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -308px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1701,7 +1715,8 @@ a.comment-delete:hover {
 }
 
 a.comment-edit {
-    background-image: url("../images/comment-edit.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -322px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1709,7 +1724,8 @@ a.comment-edit {
 }
 
 a.comment-edit:hover {
-    background-image: url("../images/comment-edit-hover.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -336px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1941,7 +1957,8 @@ div.dialog.prompt .dialog-content select, div.dialog.prompt .dialog-content text
 }
 
 .feed-icon {
-    background-image: url("../images/feed-icon-small.png"); /** sprite-ref: sprite; */
+  background-image: url('../images/sprite.png');
+  background-position: left -350px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
