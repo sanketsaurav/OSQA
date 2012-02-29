@@ -111,23 +111,6 @@ INSTALLED_APPS = [
     'forum',
 ]
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    # The profiling debug panel would be useful, but it seems that it doesn't work
-    #'debug_toolbar.panels.profiling.ProfilingDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    # Template debug panel impairs performance, so should be off for normal development
-    #'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.cache.CacheDebugPanel',
-    'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
-
-
 if DEBUG:
     try:
         import debug_toolbar
@@ -135,17 +118,6 @@ if DEBUG:
         INSTALLED_APPS.append('debug_toolbar')
     except:
         pass
-
-    # Add a very simple cProfile profiler. Add ?prof to URL to output profiling stats
-    MIDDLEWARE_CLASSES.append('forum.middleware.profiler.ProfilerMiddleware')
-
-    # Uncomment this section to enable the memcache debug-toolbar panel if it's installed
-    #try:
-    #import memcache_toolbar.panels.memcache
-    #    DEBUG_TOOLBAR_PANELS.append('memcache_toolbar.panels.memcache.MemcachePanel')
-    #    INSTALLED_APPS.append('memcache_toolbar')
-    #except:
-    #    pass
 
 try:
     import south
