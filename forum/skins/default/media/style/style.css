@@ -1,5 +1,9 @@
 /** sprite: sprite; sprite-image: url('../images/sprite.png'); sprite-layout: vertical */
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     color: #000000;
     font-family: arial, sans-serif;
