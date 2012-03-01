@@ -3562,7 +3562,7 @@ msgstr ""
 #: forum/skins/default/templates/header.html:20
 #: forum/skins/nuxeo/templates/header.html:38
 msgid "ask a question"
-msgstr "Ask a Question"
+msgstr "Ask Question"
 
 #: forum/skins/default/templates/header.html:31
 #: forum/skins/default/templates/opensearch.html:7
