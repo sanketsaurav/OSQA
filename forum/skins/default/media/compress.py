@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+import os, argparse
 from subprocess import call
 
 SS_CMD = "tools/smartsprites-0.2.8/smartsprites%s --css-files %s" # script extension, input style file
@@ -20,8 +20,8 @@ def compress_files(root):
 
             # Check this isn't already a minified version of the file, then compress
             if ".min" != s(filename)[1]:
-               if ".css" == ext: compress_css(file, dest)
-               elif ".js" == ext: compress_js(file, dest)
+                if ".css" == ext: compress_css(file, dest)
+                elif ".js" == ext: compress_js(file, dest)
 
 
 def generate_sprites():
@@ -40,12 +40,18 @@ def compress_css(file, dest):
     print("Minifying %s..." % file)
     call(YUI_CMD % (YUI_JAR, dest, file), shell=True)
 
+parser = argparse.ArgumentParser(description='Compress media resources.')
+parser.add_argument('--include', required=True, help="the resources to include in the operation. 'css', 'js' or 'all'. css includes sprite generation")
+args = parser.parse_args()
 
-print("\nGenerating sprites and styles...")
-generate_sprites()
+if args.include == 'all' or args.include == 'css':
+    print("\nGenerating sprites and styles...")
+    generate_sprites()
 
-print("\nMinifying css resources...")
-compress_files("style/")
+    print("\nMinifying css resources...")
+    compress_files("style/")
 
-print("\nCompiling JavaScript...")
-compress_files("js/")
+if args.include == 'all' or args.include == 'js':
+    print("\nCompiling JavaScript...")
+    compress_files("js/")
+

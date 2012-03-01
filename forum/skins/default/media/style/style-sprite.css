@@ -44,7 +44,7 @@ hr {
 
 input, select {
     vertical-align: middle;
-    padding: 3px 6px
+    padding: 3px;
     border: 1px solid #999;
 }
 
@@ -295,15 +295,16 @@ blockquote {
 }
 
 #searchBar .searchBtn {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
+    line-height: 20px;
     background: #729FCF;
     color: #ffffff;
     border: none;
     width: 80px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
     padding: 3px;
 }
 
