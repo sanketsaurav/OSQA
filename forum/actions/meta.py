@@ -36,10 +36,15 @@ class VoteAction(ActionProxy):
             return None
 
     def describe_vote(self, vote_desc, viewer=None):
-        return _("%(user)s %(vote_desc)s %(post_desc)s") % {
-            'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
-            'vote_desc': vote_desc, 'post_desc': self.describe_node(viewer, self.node)
-        }
+        if not settings.ANONYMOUS_VOTES or (viewer and viewer.is_authenticated() and viewer.is_superuser):
+            return _("%(user)s %(vote_desc)s %(post_desc)s") % {
+                'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+                'vote_desc': vote_desc, 'post_desc': self.describe_node(viewer, self.node)
+            }
+        else:
+            return _("%(vote_desc)s %(post_desc)s") % {
+                'vote_desc': vote_desc, 'post_desc': self.describe_node(viewer, self.node)
+            }
 
 
 class VoteUpAction(VoteAction):
