@@ -108,7 +108,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'django.contrib.markup',
-    'django_extensions',
     'forum',
 ]
 
