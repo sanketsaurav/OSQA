@@ -22,7 +22,7 @@
         <link href="{% url custom_css %}" rel="stylesheet" type="text/css" />
         {% endif %}
         {% if settings.CDN_ON %}
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
         {% else %}
         <link rel="stylesheet" href="{% media "/media/style/jquery-ui-1.8.18.css" %}" type="text/css" media="all" />
         {% endif %}
@@ -34,8 +34,8 @@
         {% block forestyle %}{% endblock %}
 
         {% if settings.CDN_ON %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery{{settings.MINIFIED_RESOURCES|yesno:".min,"}}.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui{{settings.MINIFIED_RESOURCES|yesno:".min,"}}.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery{{settings.MINIFIED_RESOURCES|yesno:".min,"}}.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui{{settings.MINIFIED_RESOURCES|yesno:".min,"}}.js"></script>
         {% else %}
         <script src="{% media  "/media/js/jquery-1.7.1-ui-1.8.18-combo.js" %}" type="text/javascript"></script>
         {% endif %}
