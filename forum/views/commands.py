@@ -574,7 +574,7 @@ def related_questions(request):
             questions = questions.order_by(can_rank)
 
         return HttpResponse(simplejson.dumps(
-                [dict(title=q.title, url=q.get_absolute_url(), score=q.score, summary=q.summary)
+                [dict(title=q.title, url=q.get_absolute_url(), score=q.score, summary=q.summary, accepted=q.accepted_count)
                  for q in questions.filter_state(deleted=False)[0:10]]), mimetype="application/json")
     else:
         raise Http404()

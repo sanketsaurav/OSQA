@@ -57,10 +57,13 @@ $(function() {
 
                 var html = '';
                 for (var i = 0; i < data.length; i++) {
+                    var className = 'answer-votes';
+                    className = data[i].accepted > 0 ? className + ' answered-accepted' : className;
                     var item = template.replace(new RegExp('%URL%', 'g'), data[i].url)
                                        .replace(new RegExp('%SCORE%', 'g'), data[i].score)
                                        .replace(new RegExp('%TITLE%', 'g'), data[i].title)
-                                       .replace(new RegExp('%SUMMARY%', 'g'), data[i].summary);
+                                       .replace(new RegExp('%SUMMARY%', 'g'), data[i].summary)
+                                       .replace(new RegExp('%VOTECLASS%', 'g'), className);
 
                     html += item;
 
