@@ -18,7 +18,11 @@ shift
 goto setupArgs
 :doneStart
 
+pushd "%~dp0"
+set BASE_DIR=%CD%
+popd
+
 rem
 rem Launch SmartSprites
 rem
-java %OPTS% -Djava.ext.dirs=lib org.carrot2.labs.smartsprites.SmartSprites %CMD_LINE_ARGS%
+java %OPTS% -Djava.ext.dirs=%BASE_DIR%\lib org.carrot2.labs.smartsprites.SmartSprites %CMD_LINE_ARGS%
