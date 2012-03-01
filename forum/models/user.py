@@ -167,7 +167,11 @@ class User(BaseModel, DjangoUser):
 
     @property
     def decorated_name(self):
-        username = smart_unicode(self.username)
+
+        if settings.SHOW_REAL_NAME and not self.real_name == "":
+            username = smart_unicode(self.real_name)
+        else:
+            username = smart_unicode(self.username)
 
         if len(username) > TRUNCATE_USERNAMES_LONGER_THAN and TRUNCATE_LONG_USERNAMES:
             username = '%s...' % username[:TRUNCATE_USERNAMES_LONGER_THAN-3]
