@@ -18,7 +18,7 @@
                 </div>
                 <script type="text/javascript">
                 (function () {
-                    var converter = new Markdown.Converter();
+                    var converter = Markdown.getSanitizingConverter();
                     var editor = new Markdown.Editor(converter);
                     editor.run();
                 })();
