@@ -230,7 +230,7 @@ class User(BaseModel, DjangoUser):
         return ('user_profile', (), keyword_arguments)
 
     def get_absolute_url(self):
-        return self.get_profile_url()
+        return "%s%s" % (django_settings.APP_URL, self.get_profile_url())
 
     @models.permalink
     def get_asked_url(self):
