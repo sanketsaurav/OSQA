@@ -13,6 +13,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.utils.encoding import smart_unicode
 from django.contrib.auth import login, logout
+from django.conf import settings as django_settings
 
 from writers import manage_pending_data
 
@@ -87,7 +88,7 @@ def prepare_provider_signin(request, provider):
 
         try:
             request_url = provider_class.prepare_authentication_request(request,
-                                                                        reverse('auth_provider_done',
+                                                                        reverse('auth_provider_done', prefix='/',
                                                                                 kwargs={'provider': provider}))
 
             return HttpResponseRedirect(request_url)
@@ -374,6 +375,10 @@ def remove_external_provider(request, id):
     association.delete()
     return HttpResponseRedirect(reverse('user_authsettings', kwargs={'id': association.user.id}))
 
+def get_manage_link(action, title):
+    result = django_settings.APP_URL + reverse('manage_pending_data', prefix='/', kwargs={'action': _(action)})
+    return html.hyperlink(result, _(title))
+
 def login_and_forward(request, user, forward=None, message=None):
     if user.is_suspended():
         return forward_suspended_user(request, user)
@@ -400,9 +405,9 @@ def login_and_forward(request, user, forward=None, message=None):
             del request.session[PENDING_SUBMISSION_SESSION_ATTR]
         elif submission_time < datetime.datetime.now() - datetime.timedelta(minutes=int(settings.WARN_PENDING_POSTS_MINUTES)):
             user.message_set.create(message=(_("You have a %s pending submission.") % pending_data['data_name']) + " %s, %s, %s" % (
-                html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('save')}), _("save it")),
-                html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('review')}), _("review")),
-                html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('cancel')}), _("cancel"))
+                get_manage_link('save', 'save it'),
+                get_manage_link('review', 'review'),
+                get_manage_link('cancel', 'cancel')
             ))
         else:
             return manage_pending_data(request, _('save'), forward)

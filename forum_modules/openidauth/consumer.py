@@ -5,6 +5,7 @@ import re
 from django.utils.encoding import smart_unicode
 from django.utils.html import escape
 from django.http import get_host
+from django.conf import settings as django_settings
 
 from forum.authentication.base import AuthenticationConsumer, InvalidAuthentication
 import settings
@@ -44,7 +45,7 @@ class OpenIdAbstractAuthConsumer(AuthenticationConsumer):
 
     def prepare_authentication_request(self, request, redirect_to):
         if not redirect_to.startswith('http://') or redirect_to.startswith('https://'):
-            redirect_to =  get_url_host(request) + redirect_to
+            redirect_to = django_settings.APP_URL + redirect_to
 
         user_url = self.get_user_url(request)
 
@@ -166,6 +167,3 @@ def get_url_host(request):
         protocol = 'http'
     host = escape(get_host(request))
     return '%s://%s' % (protocol, host)
-
-def get_full_url(request):
-    return get_url_host(request) + request.get_full_path()
