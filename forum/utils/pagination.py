@@ -283,8 +283,10 @@ def _paginated(request, objects, context):
 
     if pagesize:
         def page_sizes():
+            pagesize_path = base_path
             if sort:
                 url_builder = lambda s: mark_safe("%s%s%s=%s&amp;%s=%s" % (escape(base_path), url_joiner, context.SORT, sort, context.PAGESIZE, s))
+                pagesize_path = mark_safe("%s%s%s=%s" % (escape(base_path), url_joiner, context.SORT, sort))
             else:
                 url_builder = lambda s: mark_safe("%s%s%s=%s" % (escape(base_path), url_joiner, context.PAGESIZE, s))
 
@@ -292,7 +294,9 @@ def _paginated(request, objects, context):
 
             return page_sizes_template.render(template.Context({
                 'current': pagesize,
-                'sizes': sizes
+                'sizes': sizes,
+                'pagesize_path': base_path,
+                'pagesize_param': context.PAGESIZE
             }))
 
         paginator.page_sizes = page_sizes
@@ -310,7 +314,9 @@ def _paginated(request, objects, context):
             return sort_tabs_template.render(template.Context({
                 'current': sort,
                 'sorts': sorts,
-                'sticky': session_prefs.get('sticky_sort', False)
+                'sticky': session_prefs.get('sticky_sort', False),
+                'base_path': base_path,
+                'sort_param': context.SORT
             }))
         paginator.sort_tabs = sort_tabs()
         paginator.sort_description = mark_safe(context.sort_methods[sort].description)

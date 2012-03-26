@@ -147,52 +147,92 @@ blockquote {
     max-width: 650px;
 }
 
-#wrapper {
-    background-color: white;
-    width: 1004px;
-    padding: 4px 8px;
+/* This design targets 1200, 900, 600 and 480 pixel widths */
+
+#page {
+   background-color: white;
+   min-width: 480px;
 }
 
 #announcement {
     margin: auto;
     padding: 4px 14px;
-    width: 990px;
     text-align: center;
 }
 
 #roof {
-    height: 84px;
+    display: inline-block;
+    width: 100%;
     border-bottom: 1px solid lightGrey;
     margin-bottom: 4px;
-    padding-top: 12px;
-    padding-bottom: 4px;
+    padding: 8px 0;
     background-color: whiteSmoke;
 }
 
 #navBar {
-    width: 1020px;
+    max-width: 1200px;
+}
+
+#wrapper {
+    margin: 0 1em;
 }
 
 #room {
-    background-color: #FFFFFF;
+    max-width: 1200px;
+    margin: auto;
     padding: 5px 0;
 }
 
 #CALeft {
     float: left;
-    width: 766px;
-    margin-right: 8px;
+    display: inline-block;
+    width: 78%;
 }
 
 #CARight {
     float: right;
-    width: 230px;
+    display: inline-block;
+    width: 21%;
+    margin-left: 1%;
+}
+
+@media screen and (max-width: 900px) {
+
+  #CALeft {
+      width: 100%;
+  }
+
+  #CARight {
+      width: 100%;
+      margin-left: 0; 
+  }
+
+  #CARight-col1 {
+      float: left;
+      width: 49.5%;
+      margin-right: 0.5%;
+  }
+
+  #CARight-col2 {
+      float: right;
+      width: 49.5%;
+      margin-left: 0.5%;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  #CARight {
+      display: none;
+  }
+ 
 }
 
 #CAFull {
     float: left;
-    padding: 0 5px;
-    width: 980px;
+    width: 98%;
+    margin: 0 1%;
 }
 
 #ground {
@@ -220,7 +260,6 @@ blockquote {
 }
 
 #topNav {
-    width: 980px;
 }
 
 #topNav a {
@@ -232,15 +271,28 @@ blockquote {
 }
 
 #logo {
+    display: block;
     float: left;
-    height: 75px;
-    width: 200px;
-    margin-left: 8px;
+    width: 20%;
+    margin: 0 1%;
+}
+
+@media screen and (max-width: 480px) {
+  #logo {
+      display: none;
+  }
+}
+
+#logo img {
+    margin: auto;
+    max-width: 100%
 }
 
 #nav {
+    display: inline-block;
     float: left;
-    margin-bottom: 8px;
+    width: 77%;
+    margin-left: 1%
 }
 
 #nav a {
@@ -252,9 +304,23 @@ blockquote {
     font-weight: bold;
     height: 26px;
     line-height: 28px;
-    margin-right: 10px;
+    margin-right: 8px;
+    margin-bottom: 8px;
     padding: 1px 10px;
     text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+
+  #nav {
+      width: 99%;
+      margin-left: 1%;
+  }
+
+  #nav a {
+      margin-right: 0.2em;
+      padding: 1px 0.2em;
+  }
 }
 
 #nav a:hover {
@@ -266,9 +332,7 @@ blockquote {
 }
 
 #nav a#nav_ask {
-    float: right;
     background: #8B0000;
-    margin-left: 200px;
 }
 
 #nav a#nav_ask:hover {
@@ -281,7 +345,13 @@ blockquote {
 
 #searchBar {
     float: left;
-    margin-top: 8px;
+    margin-left: 1%;
+}
+
+@media screen and (max-width: 480px) {
+  #searchBar {
+      width: 99%;
+  }
 }
 
 #searchBar .content {
@@ -291,7 +361,7 @@ blockquote {
 #searchBar .searchInput {
     font-size: 13px;
     height: 18px;
-    width: 500px;
+    margin-left: 0;
 }
 
 #searchBar .searchBtn {
@@ -330,6 +400,7 @@ blockquote {
     background-color: #FFFFFF;
     float: left;
     padding: 0 0;
+    width: 100%
 }
 
 .thousand {
@@ -344,7 +415,7 @@ blockquote {
 
 .short-summary {
     border-top: 1px dotted #CCCCCE;
-    float: left;
+    position: relative;
     overflow: hidden;
     padding: 8px 0;
     width: 100%;
@@ -379,10 +450,14 @@ blockquote {
 }
 
 .short-summary .counts {
-    float: left;
     margin-right: 0px;
     margin-top: 4px;
     padding-right: 2px;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    bottom: 0;
+    width: 15em;
 }
 
 .short-summary .counts .item-count {
@@ -391,18 +466,40 @@ blockquote {
 }
 
 .short-summary .question-summary-wrapper {
-    float: right;
-    width: 580px;
+    margin-left: 15em;
+    min-height: 0em;
 }
 
 .short-summary .votes, .short-summary .status, .short-summary .views {
-    float: left;
     font-size: 12px;
     height: 42px;
     margin: 0 4px 0 0px;
     padding: 8px 2px 0;
     text-align: center;
     width: 52px;
+    float: left;
+}
+
+.short-summary .views {
+   display: inline;
+}
+
+@media screen and (max-width: 480px) {
+
+  .short-summary .counts {
+      width: 5.5em;
+  }
+
+
+  .short-summary .question-summary-wrapper {
+      margin-left: 5.5em;
+      min-height: 8.5em;
+  }
+
+  .short-summary .views {
+     display: none;
+  }
+
 }
 
 .short-summary .votes, .short-summary .views {
@@ -464,7 +561,6 @@ blockquote {
 
 .boxC {
     padding: 10px;
-    width: 210px;
     background-color: #EEEEEC;
     margin-bottom: 8px;
     border-radius: 5px;
@@ -492,7 +588,7 @@ blockquote {
 }
 
 .pagesize {
-    float: right; /* margin-bottom: 16px; */
+    float: right;
     margin-top: 10px;
 }
 
@@ -591,6 +687,7 @@ blockquote {
 }
 
 .marked-tags {
+    display: inline-block;
     margin-bottom: 5px;
     margin-top: 0;
 }
@@ -619,8 +716,7 @@ a.medal:hover {
 .tabBar {
     background-color: #FFFFFF;
     border-bottom: 1px solid white;
-    clear: both;
-    height: 30px;
+    display: inline-block;
     width: 100%;
 }
 
@@ -628,8 +724,7 @@ a.medal:hover {
     background-color: #FFFFFF;
     text-align: right;
     font-weight: bold;
-    height: 30px;
-    width: 100%;
+    float: right;
 }
 
 .tabsA a, .sticky-sort-tabs {
@@ -645,6 +740,26 @@ a.medal:hover {
 
 .tabsA a {
     padding: 0 11px;
+}
+
+#tabsCompact, #paginatorCompact {
+    display: none;
+}
+
+#tabsFull, #paginatorFull {
+    display: inline-block;
+}
+
+@media screen and (max-width: 480px) {
+
+  #tabsCompact, #paginatorCompact {
+      display: inline-block;
+  }
+
+  #tabsFull, #paginatorFull {
+      display: none;
+  }
+
 }
 
 .boxC .tags {
@@ -689,8 +804,6 @@ a.medal:hover {
     font-weight: 700;
     height: 23px;
     line-height: 23px;
-    margin: 5px 0 0 5px;
-    padding: 0 6px 0 15px;
 }
 
 .dot-list {
@@ -1210,6 +1323,7 @@ table.tags {
     width: 170px;
     display: inline-block;
     background-color: #EEEEEC;
+    margin-bottom: 0.4em;
 }
 
 .user ul {
@@ -1450,7 +1564,8 @@ ul.form-horizontal-rows li input {
 }
 
 #tagSelector #interestingTagInput, #ignoredTagInput {
-    width: 71%;
+    width: 70%;
+    max-width: 20em;
 }
 
 #tagSelector #interestingTagAdd, #ignoredTagAdd {
@@ -1463,6 +1578,7 @@ ul.form-horizontal-rows li input {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     width: 24%;
+    max-width: 5em;
 }
 
 #tagSelector #interestingTagAdd:hover, #ignoredTagAdd:hover {

@@ -39,11 +39,14 @@
 {% endblock %}
 
 {% block sidebar %}
-    {% include "question_list/count.html" %}
-    {% sidebar_upper %}
-    {% tag_selector %}
-    {% sidebar_lower %}
-    {% question_list_related_tags questions.paginator.page %}
-
+    <div id="CARight-col1">
+        {% include "question_list/count.html" %}
+        {% tag_selector %}
+        {% sidebar_upper %}
+    </div>
+    <div id="CARight-col2">
+        {% sidebar_lower %}
+        {% question_list_related_tags questions.paginator.page %}
+    </div>
 {% endblock %}
 <!-- end questions.html -->

@@ -17,14 +17,18 @@
             </div>
         {% endif %}
     {% endif %}
-    {% include "question_list/count.html" %}
-    {% sidebar_upper %}
-    {% if request.user.is_authenticated %}
-        {% tag_selector %}
-    {% endif %}
-    {% sidebar_lower %}
-    {% recent_tags %}
-    {% recent_awards %}
+    <div id="CARight-col1">
+        {% include "question_list/count.html" %}
+        {% if request.user.is_authenticated %}
+            {% tag_selector %}
+        {% endif %}
+        {% sidebar_upper %}
+    </div>
+    <div id="CARight-col2">
+        {% sidebar_lower %}
+        {% recent_tags %}
+        {% recent_awards %}
+    </div>
 {% endblock %}
 <!-- index.html -->
 
