@@ -1,6 +1,15 @@
 # encoding:utf-8
 import os.path
 import sys
+import warnings
+
+# Import user maintainable settings. settings_local handles logging and debug configuration, so this should occur up front
+from settings_local import *
+
+# Python 2.7 disabled DeprecationWarning messages by default. Show them if debug is enabled
+# http://docs.python.org/dev/whatsnew/2.7.html
+if DEBUG:
+    warnings.simplefilter('default')
 
 SITE_ID = 1
 
@@ -11,8 +20,8 @@ CACHE_MAX_KEY_LENGTH = 235
 
 TEMPLATE_LOADERS = [
     ('django.template.loaders.cached.Loader',(
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
     'forum.modules.template_loader.module_templates_loader',
     'forum.skins.load_template_source',
     )),
@@ -38,7 +47,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.request',
     'forum.context.application_settings',
     'forum.user_messages.context_processors.user_messages',
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
 ]
 
 ROOT_URLCONF = 'urls'
@@ -48,17 +57,17 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__),'forum','skins').replace('\\','/'),
 )
 
+LOCALE_PATHS = (
+    os.path.join(os.path.dirname(__file__),'locale').replace('\\','/'),
+)
 
 FILE_UPLOAD_TEMP_DIR = os.path.join(os.path.dirname(__file__), 'tmp').replace('\\','/')
 FILE_UPLOAD_HANDLERS = ("django.core.files.uploadhandler.MemoryFileUploadHandler",
- "django.core.files.uploadhandler.TemporaryFileUploadHandler",)
+                        "django.core.files.uploadhandler.TemporaryFileUploadHandler",)
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 ALLOW_FILE_TYPES = ('.jpg', '.jpeg', '.gif', '.bmp', '.png', '.tiff')
 ALLOW_MAX_FILE_SIZE = 1024 * 1024
-
-# User settings
-from settings_local import *
 
 try:
     if len(FORUM_SCRIPT_ALIAS) > 0:
@@ -80,7 +89,7 @@ for path in app_url_split[1].split('/')[1:]:
 if FORCE_SCRIPT_NAME.endswith('/'):
     FORCE_SCRIPT_NAME = FORCE_SCRIPT_NAME[:-1]
 
-#Module system initialization
+# Module system initialization
 MODULES_PACKAGE = 'forum_modules'
 MODULES_FOLDER = os.path.join(SITE_SRC_ROOT, MODULES_PACKAGE)
 

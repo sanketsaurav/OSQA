@@ -35,8 +35,24 @@ DATABASES = {
     }
 }
 
-CACHE_BACKEND = 'file://%s' % os.path.join(os.path.dirname(__file__),'cache').replace('\\','/')
-#CACHE_BACKEND = 'dummy://'
+# Cache configuration. Only one configuration should be uncommented
+
+# Filesystem caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'os.path.join(os.path.dirname(__file__),'cache').replace('\\','/')',
+    }
+}
+
+# Memcached caching - recommended for best performance
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#        'LOCATION': '127.0.0.1:11211',
+#    }
+#}
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # This should be equal to your domain name, plus the web application context.
