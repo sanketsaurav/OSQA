@@ -418,8 +418,7 @@ blockquote {
     border-top: 1px dotted #CCCCCE;
     position: relative;
     overflow: hidden;
-    padding: 8px 0;
-    width: 100%;
+    padding: 0.5em;
 }
 
 #listA .short-summary:first-of-type {
@@ -433,6 +432,10 @@ blockquote {
 .user-stats-heading {
     width: 100%;
     padding: 8px 0px 8px 0;
+}
+
+.short-summary.interesting {
+    background-color: #FFFFCC;
 }
 
 .short-summary h2 a {
@@ -455,7 +458,7 @@ blockquote {
     margin-top: 4px;
     padding-right: 2px;
     position: absolute;
-    top: 8px;
+    top: 0.5em;
     left: 0;
     bottom: 0;
     width: 15em;
@@ -655,9 +658,9 @@ blockquote {
 
 .tags {
     display: block;
-    line-height: 250%;
-    margin-top: 5px;
     float: left;
+    line-height: 250%;
+    margin-top: 12px;
 }
 
 .tags a, span.tag {
@@ -669,10 +672,9 @@ blockquote {
     color: #2B538D;
     font-size: 12px;
     font-weight: normal;
-    padding: 1px 6px;
+    padding: 2px 6px;
     text-decoration: none;
     white-space: nowrap;
-    float: left;
     margin: 2px;
     line-height: 16px;
 }
@@ -691,6 +693,7 @@ blockquote {
     display: inline-block;
     margin-bottom: 5px;
     margin-top: 0;
+    width: 100%;
 }
 
 .medal {
@@ -719,6 +722,7 @@ a.medal:hover {
     border-bottom: 1px solid white;
     display: inline-block;
     width: 100%;
+    margin-bottom: 0.5em;
 }
 
 .tabsA {
@@ -1557,6 +1561,24 @@ ul.form-horizontal-rows li input {
     float: left;
     margin: 4px 8px 0 0;
     width: 32px;
+}
+
+.delete-icon {
+    background-image: url("../images/close-small-dark.png"); /** sprite-ref: sprite; */
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.delete-icon:hover {
+    background-image: url("../images/close-small-hover.png"); /** sprite-ref: sprite; */
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
 }
 
 #tagSelector {

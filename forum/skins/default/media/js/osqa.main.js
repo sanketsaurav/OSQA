@@ -722,14 +722,9 @@ function pickedTags(){
     };
 
     var setupTagDeleteEvents = function(obj,tag_store,tagname,reason,send_ajax){
-        obj.unbind('mouseover').bind('mouseover', function(){
-            $(this).attr('src', mediaUrl('media/images/close-small-hover.png'));
-        });
-        obj.unbind('mouseout').bind('mouseout', function(){
-            $(this).attr('src', mediaUrl('media/images/close-small-dark.png'));
-        });
-        obj.click( function(){
+        obj.click( function(event){
             unpickTag(tag_store,tagname,reason,send_ajax);
+            return false;
         });
     };
 
@@ -764,10 +759,8 @@ function pickedTags(){
                 tag_link.attr('rel','tag');
                 tag_link.attr('href', scriptUrl + $.i18n._('tags/') + tagname + '/');
                 tag_link.html(tagname);
-                var del_link = $('<img />');
-                del_link.addClass('delete-icon');
-                del_link.attr('src', mediaUrl('media/images/close-small-dark.png'));
 
+                var del_link = $('span.delete-icon');
                 setupTagDeleteEvents(del_link, to_target, tagname, reason, true);
 
                 new_tag.append(tag_link);
@@ -804,7 +797,7 @@ function pickedTags(){
                     return;
                 }
                 tag_store[tag_name] = $(item);
-                setupTagDeleteEvents($(item).find('img'),tag_store,tag_name,reason,true);
+                setupTagDeleteEvents($(item).find('span.delete-icon'),tag_store,tag_name,reason,true);
             }
         );
     };

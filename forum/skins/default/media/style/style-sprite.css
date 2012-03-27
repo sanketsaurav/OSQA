@@ -418,8 +418,7 @@ blockquote {
     border-top: 1px dotted #CCCCCE;
     position: relative;
     overflow: hidden;
-    padding: 8px 0;
-    width: 100%;
+    padding: 0.5em;
 }
 
 #listA .short-summary:first-of-type {
@@ -433,6 +432,10 @@ blockquote {
 .user-stats-heading {
     width: 100%;
     padding: 8px 0px 8px 0;
+}
+
+.short-summary.interesting {
+    background-color: #FFFFCC;
 }
 
 .short-summary h2 a {
@@ -455,7 +458,7 @@ blockquote {
     margin-top: 4px;
     padding-right: 2px;
     position: absolute;
-    top: 8px;
+    top: 0.5em;
     left: 0;
     bottom: 0;
     width: 15em;
@@ -655,9 +658,9 @@ blockquote {
 
 .tags {
     display: block;
-    line-height: 250%;
-    margin-top: 5px;
     float: left;
+    line-height: 250%;
+    margin-top: 12px;
 }
 
 .tags a, span.tag {
@@ -669,10 +672,9 @@ blockquote {
     color: #2B538D;
     font-size: 12px;
     font-weight: normal;
-    padding: 1px 6px;
+    padding: 2px 6px;
     text-decoration: none;
     white-space: nowrap;
-    float: left;
     margin: 2px;
     line-height: 16px;
 }
@@ -691,6 +693,7 @@ blockquote {
     display: inline-block;
     margin-bottom: 5px;
     margin-top: 0;
+    width: 100%;
 }
 
 .medal {
@@ -719,6 +722,7 @@ a.medal:hover {
     border-bottom: 1px solid white;
     display: inline-block;
     width: 100%;
+    margin-bottom: 0.5em;
 }
 
 .tabsA {
@@ -1560,6 +1564,26 @@ ul.form-horizontal-rows li input {
     width: 32px;
 }
 
+.delete-icon {
+  background-image: url('../images/sprite.png');
+  background-position: left -42px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.delete-icon:hover {
+  background-image: url('../images/sprite.png');
+  background-position: left -56px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
 #tagSelector {
     padding-bottom: 14px;
 }
@@ -1636,7 +1660,7 @@ a.post-vote, .favorite-mark, a.accept-answer {
 
 a.post-vote.up {
   background-image: url('../images/sprite.png');
-  background-position: left -42px;
+  background-position: left -70px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1645,7 +1669,7 @@ a.post-vote.up {
 
 a.post-vote.up.on, a.post-vote.up:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -66px;
+  background-position: left -94px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1654,7 +1678,7 @@ a.post-vote.up.on, a.post-vote.up:hover {
 
 a.post-vote.down {
   background-image: url('../images/sprite.png');
-  background-position: left -90px;
+  background-position: left -118px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1664,7 +1688,7 @@ a.post-vote.down {
 
 a.post-vote.down.on, a.post-vote.down:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -114px;
+  background-position: left -142px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1673,7 +1697,7 @@ a.post-vote.down.on, a.post-vote.down:hover {
 
 a.accept-answer {
   background-image: url('../images/sprite.png');
-  background-position: left -138px;
+  background-position: left -166px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1682,7 +1706,7 @@ a.accept-answer {
 
 a.accept-answer.on, a.accept-answer:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -162px;
+  background-position: left -190px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1700,7 +1724,7 @@ a.accept-answer.on, a.accept-answer:hover {
 
 a.community-wiki {
   background-image: url('../images/sprite.png');
-  background-position: left -186px;
+  background-position: left -214px;
     width: 32px;
     height: 32px;
     background-repeat: no-repeat;
@@ -1716,7 +1740,7 @@ a.community-wiki {
 
 .favorite-mark {
   background-image: url('../images/sprite.png');
-  background-position: left -218px;
+  background-position: left -246px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1725,7 +1749,7 @@ a.community-wiki {
 
 .favorite-mark.on, a.favorite-mark:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -242px;
+  background-position: left -270px;
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -1802,7 +1826,7 @@ a.comment-like, a.comment-delete, a.comment-edit {
 
 a.comment-like {
   background-image: url('../images/sprite.png');
-  background-position: left -266px;
+  background-position: left -294px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1811,7 +1835,7 @@ a.comment-like {
 
 a.comment-like:hover, a.comment-like.on {
   background-image: url('../images/sprite.png');
-  background-position: left -280px;
+  background-position: left -308px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1820,7 +1844,7 @@ a.comment-like:hover, a.comment-like.on {
 
 a.comment-delete {
   background-image: url('../images/sprite.png');
-  background-position: left -294px;
+  background-position: left -322px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1829,7 +1853,7 @@ a.comment-delete {
 
 a.comment-delete:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -308px;
+  background-position: left -336px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1838,7 +1862,7 @@ a.comment-delete:hover {
 
 a.comment-edit {
   background-image: url('../images/sprite.png');
-  background-position: left -322px;
+  background-position: left -350px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -1847,7 +1871,7 @@ a.comment-edit {
 
 a.comment-edit:hover {
   background-image: url('../images/sprite.png');
-  background-position: left -336px;
+  background-position: left -364px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -2080,7 +2104,7 @@ div.dialog.prompt .dialog-content select, div.dialog.prompt .dialog-content text
 
 .feed-icon {
   background-image: url('../images/sprite.png');
-  background-position: left -350px;
+  background-position: left -378px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;

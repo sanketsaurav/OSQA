@@ -4,7 +4,7 @@
 {% if show_interesting_tags %}
 {% if user_authenticated %}
 <div id="tagSelector" class="boxC">
-	<h3 class="subtitle">{% trans "Interesting tags" %}</h3>
+    <h3 class="subtitle">{% trans "Interesting tags" %}</h3>
     <div class="tags interesting marked-tags">
     {% for tag_name in interesting_tag_names %}
         {% spaceless %}
@@ -12,14 +12,32 @@
             <a rel="tag" 
                 class="tag-link-{{ tag_name }}"
                 title="{% blocktrans with tag as tagname %}see questions tagged '{{ tag_name }}'{% endblocktrans %}"
-                href="{% url tag_questions tag_name|urlencode %}">{{tag_name}}</a>
-            <img class="delete-icon" 
-                src="{% media  "/media/images/close-small-dark.png" %}"
-                title="{% blocktrans %}remove '{{tag_name}}' from the list of interesting tags{% endblocktrans %}"/>
+                href="{% url tag_questions tag_name|urlencode %}">{{tag_name}} <span class="delete-icon" 
+                title="{% blocktrans %}remove '{{tag_name}}' from the list of interesting tags{% endblocktrans %}"></a>
         </span>
         {% endspaceless %}
     {% endfor %}
     </div>
+    <script type="text/javascript">
+    /* Once the document is ready, set question summary styles to hilight those with interesting tags */
+    $(function() {
+        var interestingTags = new Array();
+
+        $("div.tags.interesting.marked-tags").children("span").each(function(index) {
+            interestingTags.push( $(this).attr("id").replace("interesting-tag-", "" ) );
+        });
+
+        $("div.short-summary").each(function(index) {
+            var summary = $(this);
+            summary.find("div.tags").children("a").each(function(i){
+                var tag = $(this).attr("class").replace("tag-link-", "");
+                if ($.inArray(tag, interestingTags) > -1) {
+                    summary.addClass("interesting");
+                }
+            });
+        });
+    });
+    </script>
     <div>
         <input id="interestingTagInput" autocomplete="off" type="text"/>
         <input id="interestingTagAdd" type="submit" value="{% trans "Add" %}"/>
@@ -32,10 +50,8 @@
             <a rel="tag" 
                 class="tag-link-{{ tag_name }}"
                 title="{% blocktrans with tag as tagname %}see questions tagged '{{ tag_name }}'{% endblocktrans %}"
-                href="{% url tag_questions tag_name|urlencode %}">{{tag_name}}</a>
-            <img class="delete-icon" 
-                src="{% media  "/media/images/close-small-dark.png" %}"
-                title="{% blocktrans %}remove '{{tag_name}}' from the list of ignored tags{% endblocktrans %}"/>
+                href="{% url tag_questions tag_name|urlencode %}">{{tag_name}} <span class="delete-icon" 
+                title="{% blocktrans %}remove '{{tag_name}}' from the list of ignored tags{% endblocktrans %}"></a>
         </span>
         {% endspaceless %}
     {% endfor %}
