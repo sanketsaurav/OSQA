@@ -204,7 +204,7 @@ def _paginated(request, objects, context):
         base_path = context.base_path
     else:
         base_path = request.path
-        get_params = generate_uri(request.GET, (context.PAGE, context.PAGESIZE, context.SORT))
+        get_params = generate_uri(request.GET, (context.PAGE, context.PAGESIZE, context.SORT, '_pjax'))
 
         if get_params:
             base_path += "?" + get_params

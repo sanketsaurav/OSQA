@@ -161,16 +161,26 @@ blockquote {
 }
 
 #roof {
-    display: inline-block;
-    width: 100%;
-    border-bottom: 1px solid lightGrey;
-    margin-bottom: 4px;
-    padding: 8px 0;
-    background-color: whiteSmoke;
+}
+
+.sticky {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
 }
 
 #navBar {
-    max-width: 1200px;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid lightGrey;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    background-color: whiteSmoke;
+    z-index: 1;
+    box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
+    -box-drop-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
+    -box-drop-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
 }
 
 #wrapper {
@@ -178,7 +188,6 @@ blockquote {
 }
 
 #room {
-    max-width: 1200px;
     margin: auto;
     padding: 5px 0;
 }
@@ -253,29 +262,36 @@ blockquote {
 
 
 #top {
-    padding: 6px;
-    text-align: right;
-    color: white;
-    background-color: #555753;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    padding: 6px 0;
+    background-color: whiteSmoke;
+    border-bottom: 1px solid lightGrey;
 }
 
 #topNav {
-   max-width: 1200px;
+    float: right;
 }
 
 #topNav a {
     font-size: 13px;
     font-weight: bold;
-    height: 35px;
-    text-align: right;
-    color: white;
+    padding: 15px;
+    display: inline-block;
+    margin: 0 4px;
+    color: black;
+}
+
+#topNav a:hover {
+    background: #EEEEEC;
+    text-decoration: none;
 }
 
 #logo {
     display: block;
     float: left;
-    width: 20%;
-    margin: 0 1%;
+    margin-left: 8px;
 }
 
 @media screen and (max-width: 480px) {
@@ -285,19 +301,26 @@ blockquote {
 }
 
 #logo img {
-    margin: auto;
-    max-width: 100%
+    max-width: 100%;
+    height: 50px;
+}
+
+#user {
+    float: right;
 }
 
 #nav {
     display: inline-block;
     float: left;
-    width: 77%;
-    margin-left: 1%
+    margin-left: 8px;
+}
+
+#nav.right {
+    float: right;
 }
 
 #nav a {
-    background-color: #729FCF;
+    background-color: #244E8B;
     color: white;
     display: block;
     float: left;
@@ -306,7 +329,7 @@ blockquote {
     height: 26px;
     line-height: 28px;
     margin-right: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     padding: 1px 10px;
     text-decoration: none;
 }
@@ -325,11 +348,11 @@ blockquote {
 }
 
 #nav a:hover {
-    background: #2B538D;
+    background-color: #729FCF;
 }
 
 #nav a.on {
-    background: #2B538D;
+    background-color: #729FCF;
 }
 
 #nav a#nav_ask {
@@ -346,7 +369,7 @@ blockquote {
 
 #searchBar {
     float: left;
-    margin-left: 1%;
+    margin-left: 8px;
 }
 
 @media screen and (max-width: 480px) {
@@ -369,8 +392,8 @@ blockquote {
     font-size: 15px;
     font-weight: bold;
     line-height: 20px;
-    background: #729FCF;
-    color: #ffffff;
+    background-color: #244E8B;
+    color: white;
     border: none;
     width: 80px;
     border-radius: 3px;
@@ -380,7 +403,7 @@ blockquote {
 }
 
 #searchBar .searchBtn:hover {
-    background: #2B538D;
+    background-color: #729FCF;
 }
 
 #searchBar .options {
@@ -1594,8 +1617,8 @@ ul.form-horizontal-rows li input {
 }
 
 #tagSelector #interestingTagAdd, #ignoredTagAdd {
-    background: #729FCF;
-    color: #ffffff;
+    background-color: #244E8B;
+    color: white;
     border: none;
     font-weight: bold;
     padding: 3px 4px;
@@ -1607,8 +1630,7 @@ ul.form-horizontal-rows li input {
 }
 
 #tagSelector #interestingTagAdd:hover, #ignoredTagAdd:hover {
-    background: #2B538D;
-    color: #ffffff;
+    background-color: #729FCF;
 }
 
 #hideIgnoredTagsControl {

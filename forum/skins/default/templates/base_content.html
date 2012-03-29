@@ -64,6 +64,23 @@
             }
         </script>
         <script type="text/javascript" src="{% media  "/media/js/osqa.main.js" %}"></script>
+        <script type="text/javascript" src="{% media  "/media/js/waypoints-1.1.5.js" %}"></script>
+        {% if settings.USE_PJAX %}
+        <script type="text/javascript" src="{% media  "/media/js/jquery.pjax-8df345b0e7.js" %}"></script>
+        <script type="text/javascript">
+            $(function(){
+                $.pjax.defaults.timeout = {{ settings.PJAX_TIMEOUT|default:1500 }};
+
+                /* bind to all anchors */
+                $('a').pjax('#wrapper');
+
+                /* scroll to the top after a pjax event */
+                $('#wrapper').bind('pjax:end', function() {
+                    $(window).scrollTop(0);
+                });
+            })
+        </script>
+        {% endif %}
         {% if user_messages %}
         <style type="text/css">
             body { margin-top:2.4em; }
@@ -107,28 +124,30 @@
             <div class="spacer3"></div>
         </div>
         {% endblock %}
-        {% if settings.USE_CUSTOM_FOOTER|or_preview:request %}
-            {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "above" %}
-                <div id="custom_footer">
-                    {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
+        {% if not settings.ENDLESS_PAGINATION %}
+            {% if settings.USE_CUSTOM_FOOTER|or_preview:request %}
+                {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "above" %}
+                    <div id="custom_footer">
+                        {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
+                    </div>
+               {% endifequal %}
+                <div id="ground">
+                    {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "replace" %}
+                        {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
+                    {% else %}
+                        {% include "footer.html" %}
+                    {% endifequal %}
                 </div>
-            {% endifequal %}
-            <div id="ground">
-                {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "replace" %}
-                    {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
-                {% else %}
-                    {% include "footer.html" %}
+                {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "below" %}
+                    <div id="custom_footer">
+                        {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
+                    </div>
                 {% endifequal %}
-            </div>
-            {% ifequal settings.CUSTOM_FOOTER_MODE|or_preview:request "below" %}
-                <div id="custom_footer">
-                    {{ settings.CUSTOM_FOOTER|or_preview:request|static_content:settings.CUSTOM_FOOTER_RENDER_MODE }}
+            {% else %}
+                <div id="ground">
+                    {% include "footer.html" %}
                 </div>
-            {% endifequal %}
-        {% else %}
-            <div id="ground">
-                {% include "footer.html" %}
-            </div>
+            {% endif %}
         {% endif %}
         {% block endjs %}
         {% endblock %}

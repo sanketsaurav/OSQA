@@ -119,8 +119,12 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'django.contrib.markup',
+    'endless_pagination',
     'forum',
 ]
+
+ENDLESS_PAGINATION_PAGE_LABEL='pagenum'
+ENDLESS_PAGINATION_PER_PAGE=30
 
 if DEBUG:
     try:

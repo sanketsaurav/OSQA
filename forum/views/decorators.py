@@ -6,13 +6,12 @@ from datetime import datetime
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import simplejson
-from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
-from django.template import RequestContext
 from django.utils.translation import ugettext as _
 
 from forum.modules import ui, decorate
 from forum.settings import ONLINE_USERS
+from forum.views.render import render_response
 
 def login_required(func, request, *args, **kwargs):
     if not request.user.is_authenticated():
@@ -20,7 +19,7 @@ def login_required(func, request, *args, **kwargs):
     else:
         return func(request, *args, **kwargs)
 
-def render(template=None, tab=None, tab_title='', weight=500, tabbed=True):
+def render(template=None, tab=None, tab_title='', weight=500, tabbed=True, parent_template=None, pjax_parent=None, page_template=None):
     def decorator(func):        
         def decorated(context, request, *args, **kwargs):
             if request.user.is_authenticated():
@@ -32,8 +31,7 @@ def render(template=None, tab=None, tab_title='', weight=500, tabbed=True):
             if tab is not None:
                 context['tab'] = tab
 
-            return render_to_response(context.pop('template', template), context,
-                                      context_instance=RequestContext(request))
+            return render_response(context.pop('template',template), context, request, parent_template, pjax_parent, page_template)
 
         if tabbed and tab and tab_title:
             ui.register(ui.PAGE_TOP_TABS,

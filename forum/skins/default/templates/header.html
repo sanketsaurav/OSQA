@@ -1,24 +1,42 @@
 <!-- template header.html -->
 {% load extra_tags ui_registry i18n extra_filters markup %}
-
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.waypoints.settings.scrollThrottle = 30;
+        var nav_container = $('#roof');
+        var nav = $('#navBar')
+        nav_container.waypoint(function(event, direction) {
+	    nav.toggleClass('sticky', direction === "down");
+            event.stopPropagation();
+	});
+    });
+</script>
 <div id="top">
-        <div id="topNav">{% loadregistry header_links %}<span class="link-separator"> |</span>{% endloadregistry %}</div>
+        <div id="logo">
+            <a href="{% url index %}"><img style="display:block" src="{{ settings.APP_LOGO }}" title="{% trans " back to homepage" %}" alt="{{settings.APP_TITLE}} logo" /></a>
+        </div>
+        <div id="topNav">
+            {% loadregistry header_links %}<span class="link-separator"> |</span>{% endloadregistry %}
+        </div>
+        <div id="user">
+            {% if request.user.is_authenticated %}
+            <div class="user">
+                <ul>
+                    <li class="thumb"><a href="{{ user.get_profile_url }} ">{% gravatar user 32 %}</a></li>
+                    <li><a {% if user.is_suspended %}class="suspended-user" {% endif %}href="{{ user.get_profile_url }}">{{ user.decorated_name }}</a></li>
+                    <li>{% get_score_badge user %}</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
 </div>
 <div id="roof">
-	<div id="navBar">
-        <div id="logo">
-            <a href="{% url index %}">
-                <img style="display:block" src="{{ settings.APP_LOGO }}" title="{% trans " back to homepage" %}" alt="{{settings.APP_TITLE}} logo" />
-            </a>
-        </div>
-    
+    <div id="navBar">
         <div id="nav">
             {% loopregistry page_top_tabs %}{% spaceless %}
                 <a id="nav_{{ tab_name }}"{% ifequal tab tab_name %} class="on"{% endifequal %} href="{{ tab_url }}" >{{ tab_title }}</a>
             {% endspaceless %}{% endloopregistry %}
-            <a id="nav_ask" href="{% url ask %}" class="special">{% trans "ask a question" %}</a>
-        </div>
-    
+        </div>   
         <div id="searchBar">
             <form action="{% url search %}" method="get">
                 {% csrf_token %}
@@ -32,14 +50,17 @@
                 </div>
             </form>
         </div>
+        <div id="nav" class="right">
+            <a id="nav_ask" href="{% url ask %}" class="special">{% trans "ask a question" %}</a>
+        </div>
     </div>
 </div>
+
 <div class="clear"></div>
 
-	{% if settings.USE_ANNOUNCEMENT_BAR|or_preview:request %}
-  <div id="announcement">
-      {{ settings.ANNOUNCEMENT_BAR|or_preview:request|static_content:settings.ANNOUNCEMENT_BAR_RENDER_MODE }}
-  </div>
-  {% endif %}
-
+{% if settings.USE_ANNOUNCEMENT_BAR|or_preview:request %}
+<div id="announcement">
+    {{ settings.ANNOUNCEMENT_BAR|or_preview:request|static_content:settings.ANNOUNCEMENT_BAR_RENDER_MODE }}
+</div>
+{% endif %}
 <!-- end template header.html -->
