@@ -71,14 +71,29 @@
             $(function(){
                 $.pjax.defaults.timeout = {{ settings.PJAX_TIMEOUT|default:1500 }};
 
-                /* bind to all anchors */
+                /* Bind PJAX to all anchors */
                 $('a').pjax('#wrapper');
 
+                $('#wrapper').on('pjax:start', function(event) {
+                    // nothing
+                }).on('pjax:end', function(event, xhr, args) {
+                    var scrollPos = 0;
+                    if ($('#navBar').hasClass('sticky')) {
+                        scrollPos = $('#top').outerHeight(true);
+                    }
+                    $(window).scrollTop(scrollPos);
+                });
+
+                /* Loading indicator and navigation handling */
                 $('#wrapper').on('pjax:start', function() {
                     $('#indicator').toggleClass('hidden', false);
-                }).on('pjax:end', function() {
+                }).on('pjax:end', function(event, xhr, args) {
                     $('#indicator').toggleClass('hidden', true);
-                    $(window).scrollTop(0);
+
+                    $('#nav').children('a').each(function(i) {
+                        var re = new RegExp($(this).attr('href') + '($|\\?)');
+                        $(this).toggleClass('on', re.test(window.location.pathname));
+                    });
                 });
             })
         </script>
