@@ -96,7 +96,7 @@ def unanswered(request):
 def questions(request):
     return question_list(request, Question.objects.all(), _('questions'), show_summary=True)
 
-@decorators.render('questions.html')
+@decorators.render('questions.html', page_template='questions_page.html', parent_template='base.html')
 def tag(request, tag):
     try:
         tag = Tag.active.get(name=unquote(tag))
