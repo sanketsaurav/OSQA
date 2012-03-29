@@ -74,8 +74,10 @@
                 /* bind to all anchors */
                 $('a').pjax('#wrapper');
 
-                /* scroll to the top after a pjax event */
-                $('#wrapper').bind('pjax:end', function() {
+                $('#wrapper').on('pjax:start', function() {
+                    $('#indicator').toggleClass('hidden', false);
+                }).on('pjax:end', function() {
+                    $('#indicator').toggleClass('hidden', true);
                     $(window).scrollTop(0);
                 });
             })

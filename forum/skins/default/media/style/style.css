@@ -66,6 +66,10 @@ a {
     height: 0px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .badges a {
     color: #763333;
     text-decoration: underline;
@@ -365,6 +369,15 @@ blockquote {
 
 #nav a#nav_ask.on {
     color: #FFFFFF;
+}
+
+#indicator {
+   float: left;
+   display: inline-block;
+   background-image: url("../images/indicator.gif");
+   width: 24px;
+   height: 24px;
+   margin-top: 2px;
 }
 
 #searchBar {

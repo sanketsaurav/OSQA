@@ -36,7 +36,9 @@
             {% loopregistry page_top_tabs %}{% spaceless %}
                 <a id="nav_{{ tab_name }}"{% ifequal tab tab_name %} class="on"{% endifequal %} href="{{ tab_url }}" >{{ tab_title }}</a>
             {% endspaceless %}{% endloopregistry %}
-        </div>   
+        </div>
+        <div id="indicator" class="hidden">
+        </div>
         <div id="searchBar">
             <form action="{% url search %}" method="get">
                 {% csrf_token %}
