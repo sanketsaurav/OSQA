@@ -2,10 +2,9 @@ from datetime import datetime, timedelta
 import time
 
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse, Http404
-from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.utils import simplejson
 from django.db import models
@@ -19,6 +18,7 @@ from forum.utils.mail import send_template_email
 from forum.models import Question, Answer, User, Node, Action, Page, NodeState, Tag
 from forum.models.node import NodeMetaClass
 from forum.actions import NewPageAction, EditPageAction, PublishAction, DeleteAction, UserJoinsAction, CloseAction
+from forum.views.render import render_response
 from forum import settings
 
 TOOLS = {}
@@ -64,7 +64,7 @@ def admin_page_wrapper(fn, request, *args, **kwargs):
     unsaved = request.session.get('previewing_settings', {})
     context['unsaved'] = set([getattr(settings, s).set.name for s in unsaved.keys() if hasattr(settings, s)])
 
-    return render_to_response(template, context, context_instance=RequestContext(request))
+    return render_response(template, context, request, parent_template="base.html")
 
 def admin_page(fn):
     @super_user_required
@@ -586,8 +586,8 @@ def test_email_settings(request):
 
     send_template_email([user,], 'osqaadmin/mail_test.html', { 'user' : user })
 
-    return render_to_response(
+    return render_response(
         'osqaadmin/test_email_settings.html',
         { 'user': user, },
-        RequestContext(request)
-    )
+        request, parent_template="base.html")
+    
