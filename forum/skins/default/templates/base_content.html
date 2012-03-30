@@ -64,6 +64,9 @@
             }
         </script>
         <script type="text/javascript" src="{% media  "/media/js/osqa.main.js" %}"></script>
+        <script type="text/javascript">
+            $(document).ready(onready_function());
+        </script>
         <script type="text/javascript" src="{% media  "/media/js/waypoints-1.1.5.js" %}"></script>
         {% if settings.USE_PJAX %}
         <script type="text/javascript" src="{% media  "/media/js/jquery.pjax-8df345b0e7.js" %}"></script>
@@ -71,8 +74,9 @@
             $(function(){
                 $.pjax.defaults.timeout = {{ settings.PJAX_TIMEOUT|default:1500 }};
 
-                /* Bind PJAX to all anchors */
-                $('a').pjax('#wrapper');
+                /* Bind PJAX to all anchors except those that perform AJAX actions or inline actions directly */
+                // TODO add a common class/attribute to exclude anchors from pjax
+                $('a:not(.ajax-command, .action-link, .add-comment-link, .edit-comment, .feed-icon, #close-notify)').pjax('#wrapper');
 
                 $('#wrapper').on('pjax:start', function(event) {
                     // nothing

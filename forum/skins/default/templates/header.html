@@ -1,16 +1,5 @@
 <!-- template header.html -->
 {% load extra_tags ui_registry i18n extra_filters markup %}
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.waypoints.settings.scrollThrottle = 30;
-        var nav_container = $('#roof');
-        var nav = $('#navBar')
-        nav_container.waypoint(function(event, direction) {
-	    nav.toggleClass('sticky', direction === "down");
-            event.stopPropagation();
-	});
-    });
-</script>
 <div id="top">
         <div id="logo">
             <a href="{% url index %}"><img style="display:block" src="{{ settings.APP_LOGO }}" title="{% trans " back to homepage" %}" alt="{{settings.APP_TITLE}} logo" /></a>

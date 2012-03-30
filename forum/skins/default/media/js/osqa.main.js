@@ -384,7 +384,7 @@ function canned_comment(post_id, comment) {
     textarea.val(textarea_start + comment + textarea_end);
 }
 
-$(function() {
+function onready_function() {
     $('textarea.commentBox').bind('keydown keyup mousedown mouseup mousemove', function(evt) {
         comment_box_cursor_position = $(this).caret().start;
     });
@@ -673,7 +673,16 @@ $(function() {
             $container.html(metrics);
         }
     }
-});
+
+    $.waypoints.settings.scrollThrottle = 30;
+    var nav_container = $('#roof');
+    var nav = $('#navBar')
+    nav_container.waypoint(function(event, direction) {
+        nav.toggleClass('sticky', direction === "down");
+        event.stopPropagation();
+    });
+
+};
 
 //var scriptUrl, interestingTags, ignoredTags, tags, $;
 function pickedTags(){
