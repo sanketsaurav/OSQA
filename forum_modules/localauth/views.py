@@ -1,10 +1,9 @@
 from forum.models import User
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.translation import ugettext as _
 
 from forms import ClassicRegisterForm
 from forum.views.auth import login_and_forward
+from forum.views.render import render_response
 from forum.actions import UserJoinsAction
 
 def register(request):
@@ -30,6 +29,6 @@ def register(request):
     else:
         form = ClassicRegisterForm(initial={'next':'/'})
 
-    return render_to_response('auth/complete.html', {
+    return render_response('auth/complete.html', {
         'form1': form
-        }, context_instance=RequestContext(request))
+        }, request)
