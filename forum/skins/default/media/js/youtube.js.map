@@ -1,0 +1,8 @@
+{
+"version":3,
+"file":"/home/dthomas/Code/OSQA/forum/skins/default/media/js/youtube.js",
+"lineCount":1,
+"mappings":"AAAAA,CAAA,CAAEC,QAAF,CAAAC,MAAA,CAAkB,QAAQ,EAAE,CAExBF,CAAA,CAAE,yBAAF,CAAAG,QAAA,CAAqC,aACpB,GADoB,CAArC,CAFwB,CAA5B;",
+"sources":["/tmp/youtube.js.min.tmp.js"],
+"names":["$","document","ready","viewbox"]
+}

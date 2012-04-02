@@ -18,14 +18,8 @@
         {% else %}
         <link href="{% media  "/media/style/style.css" %}" rel="stylesheet" type="text/css" />
         {% endif %}
-        <link href="{% media  "/media/style/jquery.autocomplete.css" %}" rel="stylesheet" type="text/css" />
         {% if settings.USE_CUSTOM_CSS|or_preview:request %}
         <link href="{% url custom_css %}" rel="stylesheet" type="text/css" />
-        {% endif %}
-        {% if settings.CDN_ON %}
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
-        {% else %}
-        <link rel="stylesheet" href="{% media "/media/style/jquery-ui-1.8.18.css" %}" type="text/css" media="all" />
         {% endif %}
         <!--[if IE 6]>
         <style type="text/css">
@@ -63,7 +57,6 @@
                 characters: "{% trans "characters" %}"
             }
         </script>
-        <script type="text/javascript" src="{% media  "/media/js/waypoints-1.1.5.js" %}"></script>
         <script type="text/javascript" src="{% media  "/media/js/osqa.main.js" %}"></script>
         <script type="text/javascript">
             $(document).ready(onready_function());

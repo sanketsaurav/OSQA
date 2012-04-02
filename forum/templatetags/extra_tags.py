@@ -189,8 +189,7 @@ def diff_date(date, limen=2):
 
 @register.simple_tag
 def media(url):
-    use_minified = settings.MINIFIED_RESOURCES and not djsettings.DEBUG
-    url = skins.find_media_source(url, use_minified)
+    url = skins.find_media_source(url)
     if url:
         # Create the URL prefix.
         url_prefix = settings.FORCE_SCRIPT_NAME + '/m/'
