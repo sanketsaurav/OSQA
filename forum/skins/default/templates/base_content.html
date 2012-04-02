@@ -59,9 +59,8 @@
             }
         </script>
         <script type="text/javascript" src="{% media  "/media/js/osqa.main.js" %}"></script>
-        <script type="text/javascript">
-            $(document).ready(onready_function());
-        </script>
+        {% include "base_onready.html" %}
+
         {% if settings.USE_PJAX %}
         <script type="text/javascript" src="{% media  "/media/js/jquery.pjax-8df345b0e7.js" %}"></script>
         <script type="text/javascript">

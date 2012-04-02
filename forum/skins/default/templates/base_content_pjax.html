@@ -1,8 +1,6 @@
             <title>{% block fulltitle %}{% block title %}{% endblock %} - {{ settings.APP_SHORT_NAME }}{% endblock %}</title>
             {% block forestyle %}{% endblock %}
-            <script type="text/javascript">
-                $(document).ready(onready_function());
-            </script>
+            {% include "base_onready.html" %}
             {% block forejs %}{% endblock %}
             <div id="room">
                 <div id="CAFull">
