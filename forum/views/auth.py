@@ -77,7 +77,7 @@ def signin_page(request):
             'stackitem_providers': stackitem_providers,
             'smallicon_providers': smallicon_providers,
             },
-            RequestContext(request))
+            request)
 
 def prepare_provider_signin(request, provider):
     force_email_request = request.REQUEST.get('validate_email', 'yes') == 'yes'
@@ -226,7 +226,7 @@ def external_register(request):
     'provider':provider_context and mark_safe(provider_context.human_name) or _('unknown'),
     'login_type':provider_context.id,
     'gravatar_faq_url':reverse('faq') + '#gravatar',
-    }, context_instance=RequestContext(request))
+    }, request)
 
 def request_temp_login(request):
     if request.method == 'POST':
@@ -258,7 +258,7 @@ def request_temp_login(request):
 
     return render_response(
             'auth/temp_login_request.html', {'form': form},
-            context_instance=RequestContext(request))
+            request)
 
 def temp_signin(request, user, code):
     user = get_object_or_404(User, id=user)
@@ -308,7 +308,7 @@ def validate_email(request, user, code):
         EmailValidationAction(user=user, ip=request.META['REMOTE_ADDR']).save()
         return login_and_forward(request, user, reverse('index'), _("Thank you, your email is now validated."))
     else:
-        return render_response('auth/mail_already_validated.html', { 'user' : user }, RequestContext(request))
+        return render_response('auth/mail_already_validated.html', { 'user' : user }, request)
 
 def auth_settings(request, id):
     user_ = get_object_or_404(User, id=id)
@@ -364,7 +364,7 @@ def auth_settings(request, id):
     'has_password': user_.has_usable_password(),
     'auth_keys': auth_keys_list,
     'allow_local_auth': AUTH_PROVIDERS.get('local', None),
-    }, context_instance=RequestContext(request))
+    }, request)
 
 def remove_external_provider(request, id):
     association = get_object_or_404(AuthKeyUserAssociation, id=id)
