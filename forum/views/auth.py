@@ -5,8 +5,7 @@ import logging
 import urllib
 from urlparse import urlparse
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.utils.safestring import mark_safe
@@ -28,6 +27,7 @@ from forum.authentication.base import InvalidAuthentication
 from forum.authentication import AUTH_PROVIDERS
 from forum.models import User, AuthKeyUserAssociation, ValidationHash
 from forum.actions import UserJoinsAction, UserLoginAction
+from forum.views.render import render_response
 from forum import settings
 
 from vars import ON_SIGNIN_SESSION_ATTR, PENDING_SUBMISSION_SESSION_ATTR
@@ -67,7 +67,7 @@ def signin_page(request):
     except:
         msg = None
 
-    return render_to_response(
+    return render_response(
             'auth/signin.html',
             {
             'msg': msg,
@@ -221,7 +221,7 @@ def external_register(request):
 
     provider_context = AUTH_PROVIDERS[request.session['auth_provider']].context
 
-    return render_to_response('auth/complete.html', {
+    return render_response('auth/complete.html', {
     'form1': form1,
     'provider':provider_context and mark_safe(provider_context.human_name) or _('unknown'),
     'login_type':provider_context.id,
@@ -256,7 +256,7 @@ def request_temp_login(request):
     else:
         form = TemporaryLoginRequestForm()
 
-    return render_to_response(
+    return render_response(
             'auth/temp_login_request.html', {'form': form},
             context_instance=RequestContext(request))
 
@@ -308,7 +308,7 @@ def validate_email(request, user, code):
         EmailValidationAction(user=user, ip=request.META['REMOTE_ADDR']).save()
         return login_and_forward(request, user, reverse('index'), _("Thank you, your email is now validated."))
     else:
-        return render_to_response('auth/mail_already_validated.html', { 'user' : user }, RequestContext(request))
+        return render_response('auth/mail_already_validated.html', { 'user' : user }, RequestContext(request))
 
 def auth_settings(request, id):
     user_ = get_object_or_404(User, id=id)
@@ -357,7 +357,7 @@ def auth_settings(request, id):
         'id': k.id
         })
 
-    return render_to_response('auth/auth_settings.html', {
+    return render_response('auth/auth_settings.html', {
     'view_user': user_,
     "can_view_private": (user_ == request.user) or request.user.is_superuser,
     'form': form,
