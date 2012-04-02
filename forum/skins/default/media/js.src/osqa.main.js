@@ -1,11 +1,4 @@
 /**
- * Main OSQA library. JQuery dependencies must be loaded before this file.
- *
- * @depends waypoints-1.1.5.js
- *
- */
-
-/**
  * We do not want the CSRF protection enabled for the AJAX post requests, it causes only trouble.
  * Get the csrftoken cookie and pass it to the X-CSRFToken HTTP request property.
  */

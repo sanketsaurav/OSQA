@@ -1,8 +1,8 @@
 {
 "version":3,
-"file":"/home/dthomas/Code/OSQA/forum/skins/default/media/js/osqa.question.js",
+"file":"../js/osqa.question.js",
 "lineCount":1,
 "mappings":"AAAAA,CAAA,CAAE,QAAS,EAAG,CACVA,CAAA,CAAE,qBAAF,CAAAC,KAAA,EAEAD,EAAA,CAAE,SAAF,CAAAE,MAAA,CAAmB,QAAQ,EAAE,CAAEF,CAAA,CAAE,qBAAF,CAAAG,OAAA,CAAgC,MAAhC,CAAF,CAA7B,CACAH,EAAA,CAAE,SAAF,CAAAI,KAAA,CAAkB,QAAQ,EAAE,CAAEJ,CAAA,CAAE,qBAAF,CAAAK,QAAA,CAAiC,MAAjC,CAAF,CAA5B,CAJU,CAAd;",
-"sources":["/tmp/osqa.question.js.min.tmp.js"],
+"sources":["../js.src/osqa.question.js"],
 "names":["$","hide","focus","fadeIn","blur","fadeOut"]
 }

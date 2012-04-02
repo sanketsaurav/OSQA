@@ -1,2 +1,2 @@
 (function(a){a(document).ready(function(){var b=1;"undefined"!=typeof endless_on_scroll_margin&&(b=endless_on_scroll_margin);a(window).scroll(function(){a(document).height()-a(window).height()-a(window).scrollTop()<=b&&a("a.endless_more").click()})})})(jQuery);
-//@ sourceMappingURL=js/endless_on_scroll-1.1.js.map
+//@ sourceMappingURL=endless_on_scroll-1.1.js.map
