@@ -33,7 +33,8 @@ class OpenIdAbstractAuthConsumer(AuthenticationConsumer):
     sreg_attributes = {
         "required": {
             "email": "email",
-            "nickname": "username"
+            "nickname": "username",
+            "fullname": "real_name"
         }
     }
 
