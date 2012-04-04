@@ -69,7 +69,7 @@
 
                 /* Bind PJAX to all anchors except those that perform AJAX actions or inline actions directly */
                 // TODO add a common class/attribute to exclude anchors from pjax
-                $('a:not(.ajax-command, .action-link, .add-comment-link, .edit-comment, .feed-icon, #close-notify)').pjax('#wrapper');
+                $('a:not(.endless_more, .endless_page_link, .ajax-command, .action-link, .add-comment-link, .edit-comment, .feed-icon, #close-notify)').pjax('#wrapper');
 
                 $('#wrapper').on('pjax:start', function(event) {
                     // nothing
