@@ -10,6 +10,8 @@
 {% block metadescription %}{% spaceless %}
     {% if tag %}
         {% blocktrans with settings.APP_TITLE as app_title %}Questions and answers about {{ tag }} on {{ app_title }}{% endblocktrans %}
+    {% else %}
+        {{ settings.APP_DESCRIPTION }}
     {% endif %}
 {% endspaceless %}{% endblock %}
 
