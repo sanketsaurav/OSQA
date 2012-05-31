@@ -1856,7 +1856,7 @@ Disable accepted/owner colour coding
     margin-left: 4px;
 }
 
-a.comment-like, a.comment-delete, a.comment-edit {
+a.comment-like, a.comment-delete, a.comment-edit, a.comment-convert {
     margin-left: 6px;
 }
 
@@ -1908,6 +1908,24 @@ a.comment-edit {
 a.comment-edit:hover {
   background-image: url('../images/sprite.png');
   background-position: left -364px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+a.comment-convert {
+  background-image: url('../images/sprite.png');
+  background-position: left -378px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+a.comment-convert:hover {
+  background-image: url('../images/sprite.png');
+  background-position: left -392px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
@@ -2140,7 +2158,7 @@ div.dialog.prompt .dialog-content select, div.dialog.prompt .dialog-content text
 
 .feed-icon {
   background-image: url('../images/sprite.png');
-  background-position: left -378px;
+  background-position: left -406px;
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
