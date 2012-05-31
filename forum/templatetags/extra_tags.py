@@ -97,54 +97,49 @@ def get_accept_rate(user):
     else:
         freeze = False
 
-    # dthomas: This was inconsistent with the generally accepted method of accept rate calculation used by Stack Exchange.
-    # What we care about is that users are accepting answers on the questions they ask, not that their answers are accepted.
-    # Question quality and an accepted answer is far more important than answer quality.
-    
-    # We get the number of all user's answers.
-    #total_answers_count = Answer.objects.filter(author=user).count()
+    if settings.USE_USERS_QUESTIONS_FOR_ACCEPT_RATE:
+        user_questions = Question.objects.filter(author=user)
+        total = user_questions.count()
+        part = Answer.objects.filter(state_string__contains="(accepted)", parent__in=user_questions).count()
+        text_more_than_one = '%(user)s has accepted %(count)d answers'
+        text_one = '%s has accepted one answer'
+        text_none = '%s has not accepted any answers'
+        title = 'The percentage of user\'s questions with accepted answers'
+    else:
+        total = Answer.objects.filter(author=user).count()
+        part = Answer.objects.filter(author=user, state_string__contains="(accepted)").count()
+        text_more_than_one = '%(user)s has %(count)d accepted answers'
+        text_one = '%s has one accepted answer'
+        text_none = '%s has no accepted answers'
+        title = 'Rate of the user\'s accepted answers'
 
-    # We get the number of the user's accepted answers.
-    #accepted_answers_count = Answer.objects.filter(author=user, state_string__contains="(accepted)").count()
-    
-    user_questions = Question.objects.filter(author=user)
-    
-    # The total number of answers for the user
-    total_questions_count = user_questions.count()
-
-    # The number of answers accepted on questions that the user asked. It could be argued that we should only count a maximum of one answer per question
-    # but OSQA has configurable multiple answer support, so I think it's fair to count all accepted answers on a question the user asked  
-    accepted_answers_count = Answer.objects.filter(state_string__contains="(accepted)", parent__in=user_questions).count()
-
-    # In order to represent the accept rate in percentages we divide the number of the accepted answers to the
-    # total answers count and make a hundred multiplication.
     try:
-        accept_rate = (float(accepted_answers_count) / float(total_questions_count) * 100)
+        accept_rate = (float(part) / float(total) * 100)
     except ZeroDivisionError:
         accept_rate = 0
 
     # If the user has more than one accepted answers the rate title will be in plural.
-    if accepted_answers_count > 1:
-        accept_rate_number_title = _('%(user)s has accepted %(count)d answers') % {
+    if part > 1:
+        accept_rate_number_title = _(text_more_than_one) % {
             'user' :  smart_unicode(user.username),
-            'count' : int(accepted_answers_count)
+            'count' : int(part)
         }
     # If the user has one accepted answer we'll be using singular.
-    elif accepted_answers_count == 1:
-        accept_rate_number_title = _('%s has accepted one answer') % smart_unicode(user.username)
+    elif part == 1:
+        accept_rate_number_title = _(text_one) % smart_unicode(user.username)
     # This are the only options. Otherwise there are no accepted answers at all.
     else:
         if freeze:
             accept_rate_number_title = ""
         else:
-            accept_rate_number_title = _('%s has not accepted any answers') % smart_unicode(user.username)
+            accept_rate_number_title = _(text_none) % smart_unicode(user.username)
 
     html_output = """
     <span title="%(accept_rate_title)s" class="accept_rate">%(accept_rate_label)s:</span>
     <span title="%(accept_rate_number_title)s">%(accept_rate)d&#37;</span>
     """ % {
         'accept_rate_label' : _('accept rate'),
-        'accept_rate_title' : _('The percentage of user\'s questions with accepted answers'),
+        'accept_rate_title' : _(title),
         'accept_rate' : 100 if freeze else int(accept_rate),
         'accept_rate_number_title' : u'%s' % accept_rate_number_title,
     }
