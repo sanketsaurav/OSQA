@@ -5,6 +5,7 @@ from forum.models import *
 from django.utils.translation import ugettext as _
 
 from django.utils.encoding import smart_unicode
+from django.utils.safestring import mark_safe
 from general import NextUrlField, UserNameField
 
 from forum import settings
@@ -71,7 +72,7 @@ class AnswerEditorField(EditorField):
 
 
 class TagNamesField(forms.CharField):
-    def __init__(self, user=None, *args, **kwargs):
+    def __init__(self, user=None, initial='', *args, **kwargs):
         super(TagNamesField, self).__init__(*args, **kwargs)
 
         self.required = True
@@ -82,7 +83,7 @@ class TagNamesField(forms.CharField):
         self.help_text = _('Tags are short keywords, with no spaces within. At least %(min)s and up to %(max)s tags can be used.') % {
             'min': settings.FORM_MIN_NUMBER_OF_TAGS, 'max': settings.FORM_MAX_NUMBER_OF_TAGS    
         }
-        self.initial = ''
+        self.initial = initial
         self.user = user
 
     def clean(self, value):
@@ -95,6 +96,16 @@ class TagNamesField(forms.CharField):
         list = {}
         for tag in split_re.split(data):
             list[tag] = tag
+        
+        if settings.ENFORCE_TAG_FORMAT_FLAG and settings.ENFORCE_TAG_FORMAT_RX and len(str(settings.ENFORCE_TAG_FORMAT_RX.strip())) > 0:
+            try:
+                regexp = re.compile(str(settings.ENFORCE_TAG_FORMAT_RX.strip()))
+                good_tags = [tag for tag in list.values() if regexp.match(tag)]
+                if len(good_tags) == 0:
+                    raise forms.ValidationError(mark_safe(_(settings.ENFORCE_TAG_FORMAT_ERROR_MESSAGE)))
+            except re.error:
+                logging.error("Error while trying to match tags against '%s'" % settings.ENFORCE_TAG_FORMAT_RX)
+                pass
 
         if len(list) > settings.FORM_MAX_NUMBER_OF_TAGS or len(list) < settings.FORM_MIN_NUMBER_OF_TAGS:
             raise forms.ValidationError(_('please use between %(min)s and %(max)s tags') % { 'min': settings.FORM_MIN_NUMBER_OF_TAGS, 'max': settings.FORM_MAX_NUMBER_OF_TAGS})
@@ -175,10 +186,10 @@ class AskForm(forms.Form):
     title  = TitleField()
     text   = QuestionEditorField()
 
-    def __init__(self, data=None, user=None, *args, **kwargs):
+    def __init__(self, data=None, user=None, default_tag='', *args, **kwargs):
         super(AskForm, self).__init__(data, *args, **kwargs)
 
-        self.fields['tags']   = TagNamesField(user)
+        self.fields['tags']   = TagNamesField(user, initial=default_tag)
         
         if int(user.reputation) < settings.CAPTCHA_IF_REP_LESS_THAN and not (user.is_superuser or user.is_staff):
             spam_fields = call_all_handlers('create_anti_spam_field')
