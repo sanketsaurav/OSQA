@@ -44,7 +44,7 @@ def media(request, skin, path):
 
 
 def markdown_help(request):
-    return render_response('markdown_help.html', request)
+    return render_response('markdown_help.html', {}, request)
 
 @cache_page(60 * 60 * 24 * 30) #30 days
 def opensearch(request):
@@ -77,7 +77,7 @@ def feedback(request):
 feedback.CANCEL_MESSAGE=_('We look forward to hearing your feedback! Please, give it next time :)')
 
 def privacy(request):
-    return render_response('privacy.html', request)
+    return render_response('privacy.html', {}, request)
 
 @decorate.withfn(login_required)
 def logout(request):
