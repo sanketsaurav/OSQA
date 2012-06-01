@@ -199,6 +199,8 @@ def media(url):
         url_prefix = re.sub("/+", "/", url_prefix)
 
         url = url_prefix + url
+        if hasattr(djsettings, 'MEDIA_SUFFIX'):
+          url = url + '?' + djsettings.MEDIA_SUFFIX
         return url
 
 @register.simple_tag
