@@ -9,7 +9,6 @@ from forum.templatetags.extra_tags import get_score_badge
 from forum.utils.html import cleanup_urls
 from forum import settings
 
-
 try:
     from django.template import get_templatetags_modules
     modules_template_tags = get_modules_script('templatetags')
@@ -77,7 +76,8 @@ ui.register(ui.USER_MENU,
                 url=lambda u, c: reverse('user_authsettings', kwargs={'id': c['user'].id}),
                 span_attrs={'class': 'user-auth'},
                 weight=100,
-                name='AUTH_SETTINGS'
+                name='AUTH_SETTINGS',
+                visibility=ui.Visibility.AUTHENTICATED if settings.USERS_CAN_CHANGE_AUTH_SETTINGS else ui.Visibility.NOBODY,
             ),
             ui.UserMenuItem(
                 label=_("email notification settings"),
