@@ -237,7 +237,7 @@ def search(request):
         else:
             return question_search(request, keywords)
     else:
-        return render_response("search.html", request)
+        return render_response("search.html", {}, request)
 
 @decorators.render('questions.html', page_template='questions_page.html', parent_template='base.html')
 def question_search(request, keywords):

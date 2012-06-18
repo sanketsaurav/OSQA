@@ -7,6 +7,8 @@ from django.shortcuts import render_to_response
 # Replacement for django render_to_string and render_to_response to include support for endless pagination and PJAX
 
 def render_response(template, context=None, request=None, parent_template=None, pjax_parent=None, page_template=None):
+    if context is None:
+        context = {}
     context['parent_template'] = _resolve_parent(request, parent_template, pjax_parent)
     render_template = _resolve_template(context, request, template, page_template)
 
@@ -53,7 +55,7 @@ def _resolve_template(context, request, template, page_template=None):
         context['page_template'] = page_template
 
     if request is not None:
-        if request.is_ajax() and not _isPjax(request):
+        if request.is_ajax() and not _isPjax(request) and page_template is not None:
             resolved_template = page_template
 
     return resolved_template

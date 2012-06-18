@@ -128,7 +128,7 @@ def online_users(request):
         "sort" : sort,
         "page" : page,
         "pageSize" : pagesize,
-    })
+    }, request)
 
 
 def edit_user(request, id, slug):
@@ -199,7 +199,7 @@ def user_powers(request, id, action, status):
 @decorate.withfn(decorators.command)
 def award_points(request, id):
     if not request.POST:
-        return render_response('users/karma_bonus.html')
+        return render_response('users/karma_bonus.html', {}, request)
 
     if not request.user.is_superuser:
         raise decorators.CommandException(_("Only superusers are allowed to award reputation points"))
@@ -233,7 +233,7 @@ def suspend(request, id):
             suspension.cancel(user=request.user, ip=request.META['REMOTE_ADDR'])
             return decorators.RefreshPageCommand()
         else:
-            return render_response('users/suspend_user.html')
+            return render_response('users/suspend_user.html', {}, request)
 
     data = {
         'bantype': request.POST.get('bantype', 'Indefinitely').strip(),

@@ -59,17 +59,13 @@ def command(func, request, *args, **kwargs):
 
         response['success'] = True
     except Exception, e:
-        import traceback
-        #traceback.print_exc()
-
         if isinstance(e, CommandException):
             response = {
             'success': False,
             'error_message': e.message
             }
         else:
-            logging.error("%s: %s" % (func.__name__, str(e)))
-            logging.error(traceback.format_exc())
+            logging.exception("%s: %s" % (func.__name__, str(e)))
             response = {
             'success': False,
             'error_message': _("We're sorry, but an unknown error ocurred.<br />Please try again in a while.")
