@@ -1844,7 +1844,7 @@ Disable accepted/owner colour coding
     margin-left: 4px;
 }
 
-a.comment-like, a.comment-delete, a.comment-edit {
+a.comment-like, a.comment-delete, a.comment-edit, a.comment-convert {
     margin-left: 6px;
 }
 
@@ -1890,6 +1890,22 @@ a.comment-edit {
 
 a.comment-edit:hover {
     background-image: url("../images/comment-edit-hover.png"); /** sprite-ref: sprite; */
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+a.comment-convert {
+    background-image: url("../images/convert-off.png"); /** sprite-ref: sprite; */
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+a.comment-convert:hover {
+    background-image: url("../images/convert-hover.png"); /** sprite-ref: sprite; */
     width: 14px;
     height: 14px;
     background-repeat: no-repeat;
