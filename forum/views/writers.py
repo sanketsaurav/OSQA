@@ -105,8 +105,11 @@ def ask(request):
         elif "go" in request.POST:
             form = AskForm({'title': request.POST['q']}, user=request.user)
             
+    default_tag = ''
+    if settings.AUTO_SET_TAG_ON_QUESTION and 'tag' in request.GET:
+        default_tag = request.GET['tag']
     if not form:
-        form = AskForm(user=request.user)
+        form = AskForm(user=request.user, default_tag=default_tag)
 
     return render_response('ask.html', {
         'form' : form,
