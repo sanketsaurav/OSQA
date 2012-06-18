@@ -1,4 +1,8 @@
-from os import linesep
+try:
+    from os import linesep
+except ImportError:
+    linesep = "\n"
+
 from csv import reader, QUOTE_NONE
 import markdown
 from markdown import Extension
