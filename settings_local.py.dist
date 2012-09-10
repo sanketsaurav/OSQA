@@ -41,7 +41,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'os.path.join(os.path.dirname(__file__),'cache').replace('\\','/')',
+        'LOCATION': os.path.join(os.path.dirname(__file__),'cache').replace('\\','/')
     }
 }
 
